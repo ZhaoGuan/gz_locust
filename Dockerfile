@@ -2,10 +2,10 @@
 FROM python:3.5
 
 # Set the working directory to /app
-WORKDIR /app
+WORKDIR /gz_locust
 
 # Copy the current directory contents into the container at /app
-ADD . /app
+ADD . /gz_locust
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt

@@ -2,4 +2,4 @@
 # __author__ = 'Gz'
 import os
 
-os.system('locust -f locustfile.py --master-host=172.16.2.196')
+os.system('locust -f locustfile.py --host=http://api-dev.kikakeyboard.com')
