@@ -8,7 +8,7 @@ class popup_test(TaskSet):
         """ on_start is called when a Locust start before any task is scheduled """
         self.popup()
 
-    @task(5)
+    @task(1)
     def popup(self):
         # self.client.header()
         header_online = {
@@ -33,7 +33,11 @@ class popup_test(TaskSet):
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             except:
                 pass
-        # print(pop.json())
+                # print(pop.json())
+    @task(10)
+    def baidu(self):
+        url = 'https://www.baidu.com/'
+        self.client.get(url)
 
 
 class MyLocust(HttpLocust):
