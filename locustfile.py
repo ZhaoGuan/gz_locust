@@ -43,4 +43,4 @@ class popup_test(TaskSet):
 class MyLocust(HttpLocust):
     task_set = popup_test
     min_wait = 5000
-    max_wait = 9000
+    max_wait = 9000000
