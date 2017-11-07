@@ -24,8 +24,11 @@ class popup_test(TaskSet):
             'http://52.43.155.219:9090/backend-content-sending/popup?tag=lol&kb_lang=en_AU&sign=87d6cf9df3294d23b6ac7d85b28d4491',
             headers=header_test, catch_response=True)
         with pop as response:
-            if response.json()['errorMsg'] != 'ok':
-                response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
         print(pop.json())
 
         # @task(10)
