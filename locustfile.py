@@ -24,11 +24,8 @@ class popup_test(TaskSet):
             'http://52.43.155.219:9090/backend-content-sending/popup?tag=lol&kb_lang=en_AU&sign=87d6cf9df3294d23b6ac7d85b28d4491',
             headers=header_test, catch_response=True)
         with pop as response:
-            try:
-                if response.json()['errorMsg'] != 'ok':
-                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-            except:
-                pass
+            if response.json()['errorMsg'] != 'ok':
+                response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         print(pop.json())
 
         # @task(10)
@@ -43,6 +40,6 @@ class popup_test(TaskSet):
 class MyLocust(HttpLocust):
     task_set = popup_test
     # 任务的最小等待时间单位ms
-    min_wait = 500
+    # min_wait = 500
     # 任务的最大等待时间单位ms
-    max_wait = 2000
+    # max_wait = 2000
