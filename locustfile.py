@@ -29,7 +29,7 @@ class popup_test(TaskSet):
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             except:
                 pass
-        print(pop.json())
+        # print(pop.json())
 
     @task(0)
     def baidu(self):
@@ -43,6 +43,6 @@ class popup_test(TaskSet):
 class MyLocust(HttpLocust):
     task_set = popup_test
     # 任务的最小等待时间单位ms
-    min_wait = 1
+    min_wait = 100
     # 任务的最大等待时间单位ms
-    max_wait = 2
+    max_wait = 1000
