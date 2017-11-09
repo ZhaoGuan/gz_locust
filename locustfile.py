@@ -4,7 +4,7 @@ from locust import HttpLocust, TaskSet, task
 
 
 class popup_test(TaskSet):
-    @task(10)
+    @task(0)
     def popup(self):
         # self.client.header()
         header_online = {
@@ -31,7 +31,7 @@ class popup_test(TaskSet):
                 pass
         # print(pop.json())
 
-    @task(0)
+    @task(10)
     def baidu(self):
         url = 'https://www.baidu.com/'
         response = self.client.get(url)
