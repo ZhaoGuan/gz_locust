@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # __author__ = 'Gz'
-import daemon
 import os
 
 host = input('输入master的host:')

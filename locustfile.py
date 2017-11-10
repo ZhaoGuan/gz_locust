@@ -1,6 +1,16 @@
 # -*- coding: utf-8 -*-
 # __author__ = 'Gz'
 from locust import HttpLocust, TaskSet, task
+from case_generate import Http_Test, config_reader, get_duid_in_way
+import random
+
+# 放在引用前保证数据数量
+test_data = config_reader('./test_case')
+a = Http_Test(test_data)
+all_data = a.url_keys_data()
+
+
+# single_data = all_data[random.choice(range(len(all_data)))]
 
 
 class popup_test(TaskSet):
@@ -29,15 +39,32 @@ class popup_test(TaskSet):
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             except:
                 pass
-        # print(pop.json())
+                # print(pop.json())
 
-    @task(10)
+    @task(0)
     def baidu(self):
         url = 'https://www.baidu.com/'
         response = self.client.get(url)
 
-
-#
+    @task(10)
+    def case(self):
+        # 随机获取数据
+        single_data = all_data[random.choice(range(len(all_data)))]
+        fail = []
+        if a.data == None or a.keys == None:
+            url = a.url
+            response = self.client.get(url, catch_response=True)
+        else:
+            lang = single_data['kb_lang']
+            duid = single_data['duid']
+            app = single_data['app']
+            header = a.set_header(duid, app=app, version=a.version, lang=lang, way=a.way)
+            url = a.url_mosaic(single_data)
+            response = self.client.get(url, headers=header, catch_response=True)
+            if a.asser_api(single_data, response, fail) is True:
+                response.success()
+            else:
+                response.failure(response.text)
 
 
 class MyLocust(HttpLocust):
