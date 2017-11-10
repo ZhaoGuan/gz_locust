@@ -9,7 +9,7 @@
     格式：
     url: https://api.kikakeyboard.com/v1/utils/get_app_config?key=sticker2&
     #拼接到url中的key值(duid=sign)
-    keys: 'duid' keys
+    keys: ['kb_lang','tag','duid']
     #对应的data数据
     data:
     #app对应值必填(给header用至少1个)
