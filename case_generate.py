@@ -69,7 +69,6 @@ def get_duid_in_way(way, result):
 class Http_Test:
     def __init__(self, config):
         self.config = config
-        self.cycle_times = self.config['cycle_times']
         self.url = self.config['url']
         try:
             self.keys = self.config['keys']
