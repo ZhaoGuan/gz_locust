@@ -5,7 +5,7 @@
 # web0
 #url: http://54.70.186.123:8080/backend-content-sending/popup?
 # 离线服务器
-url : http://kika-backend-sticker-web0.intranet.com/v1/stickers2/popup?
+url : http://kika-backend-sticker-web0.intranet.com/backend-content-sending/popup?
 keys: ['kb_lang','tag','duid']
 data:
   app: ['kika','ikey','pro']
