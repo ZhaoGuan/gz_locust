@@ -1,9 +1,11 @@
 # 线上
-url: https://api.kikakeyboard.com/v1/stickers2/popup?
+#url: https://api.kikakeyboard.com/v1/stickers2/popup?
 # test3
 #url: http://52.43.155.219:9090/backend-content-sending/popup?
 # web0
 #url: http://54.70.186.123:8080/backend-content-sending/popup?
+# 离线服务器
+url : http://kika-backend-sticker-web0.intranet.com/v1/stickers2/popup?
 keys: ['kb_lang','tag','duid']
 data:
   app: ['kika','ikey','pro']
@@ -14,7 +16,7 @@ data:
   duid : [[4,0], [4,1],[4,2],[4,3]]
 assert:
 #  返回码(只能第一层)
-  code : {'key':'errorCode','value':1}
+  code : {'key':'errorCode','value':0}
 #  字段格式
   data_format : {"errorCode":'Int',"errorMsg":'Str',"data":{'tag':'&&&'}}
 #  数据检查
