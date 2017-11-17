@@ -1,0 +1,10 @@
+master_host: http://127.0.0.1:8089/
+dir : 20171117
+plan : [
+        {'locust_count': 10, 'hatch_rate': 1},
+        {'locust_count': 20, 'hatch_rate': 1},
+        {'locust_count': 30, 'hatch_rate': 1},
+        {'locust_count': 35, 'hatch_rate': 1}
+        ]
+#时间单位S
+duration : 10

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 # __author__ = 'Gz'
+
+# ------------服务压测内容设置------------
 from locust import HttpLocust, TaskSet, task
 from case_generate import Http_Test, config_reader, get_duid_in_way
 import random
@@ -73,3 +75,7 @@ class MyLocust(HttpLocust):
     min_wait = 100
     # 任务的最大等待时间单位ms
     max_wait = 1000
+    host = 'api.kikakeyboard.com'
+
+    # if __name__=="__main__":
+    #     print(os.path.dirname(os.path.abspath(__file__)))
