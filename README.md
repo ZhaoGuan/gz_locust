@@ -32,7 +32,7 @@
         version: 2043
     #header的选择(其实就是api或api-dev)
         way: online
-    #host填写(针对非api.kika和api-dev.kika)
+    #host填写(非必填)
         host:
 ## 测试计划格式
     #master地址
