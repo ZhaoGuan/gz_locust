@@ -74,8 +74,7 @@ class MyLocust(HttpLocust):
     # 任务的最小等待时间单位ms
     min_wait = 100
     # 任务的最大等待时间单位ms
-    max_wait = 1000
+    max_wait = 100
     host = 'api.kikakeyboard.com'
 
-    # if __name__=="__main__":
-    #     print(os.path.dirname(os.path.abspath(__file__)))
+

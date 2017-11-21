@@ -7,4 +7,4 @@ plan : [
         {'locust_count': 35, 'hatch_rate': 1}
         ]
 #时间单位S
-duration : 10
+duration : 60

@@ -102,10 +102,7 @@ class Http_Test:
             self.other = self.config['other']
             self.host = self.other['host']
         except:
-            if self.way == 'test':
-                self.host = 'api-dev.kikakeyboard.com'
-            else:
-                self.host = 'api.kikakeyboard.com'
+            self.host = None
         try:
             self.Assert = self.config['assert']
         except:
