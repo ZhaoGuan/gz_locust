@@ -21,7 +21,7 @@ assert:
   data_format : {"errorCode":'Int',"errorMsg":'Str',"data":{'tag':'&&&'}}
 #  数据检查
 #  data_content : {'':''}
-other:
+#other:
   version: 2043
   way: online
   host :
