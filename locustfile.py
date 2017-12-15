@@ -85,7 +85,7 @@ class popup_test(TaskSet):
             # url = a.url_mosaic(single_data)
             url = a.url + 'tag=' + single_data['tag'] + '&userId=' + single_data[
                 'duid'] + '&sessionId=sticker' + shortuuid.uuid()
-            response = self.client.get(url, headers=header, catch_response=True)
+            response = self.client.get(url, headers=header)
             # if (a.asser_api(single_data, response, fail) is True) and ('hit' in response.text):
             #     response.success()
             # else:
@@ -108,7 +108,7 @@ class MyLocust(HttpLocust):
     # 任务的最大等待时间单位ms
     max_wait = 100
     # host = 'api.kikakeyboard.com'
-    host = 'blau.kika-backend.com'
+    # host = 'blau.kika-backend.com'
 if __name__=='__main__':
     single_data = all_data[random.choice(range(len(all_data)))]
     url = a.url + 'tag=' + single_data['tag'] + '&userId=' + single_data[
