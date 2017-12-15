@@ -84,8 +84,7 @@ class popup_test(TaskSet):
             header = a.set_header(duid, app=app, version=a.version, lang=lang, way=a.way)
             # url = a.url_mosaic(single_data)
             url = a.url + 'tag=' + single_data['tag'] + '&userId=' + single_data[
-                'duid']
-            # + '&sessionId=sticker' + shortuuid.uuid()
+                'duid']+'&sessionId=sticker1231231231231313123121231231231'
             response = self.client.get(url, headers=header)
             print(response.text)
             # if (a.asser_api(single_data, response, fail) is True) and ('hit' in response.text):
