@@ -27,5 +27,5 @@ assert:
 #other:
   version: 1477
   way: online
-  host :
+  host : api.kikakeyboard.com
 
