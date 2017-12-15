@@ -8,11 +8,12 @@ url: https://api.kikakeyboard.com/v1/stickers2/popup?
 #url : http://kika-backend-sticker-web0.intranet.com/backend-content-sending/popup?
 keys: ['kb_lang','tag','duid']
 data:
-  app: ['kika','ikey','pro']
-  kb_lang : ['en_US', 'en_AU', 'es_AR', 'pt_BR', 'in_ID']
+  app: ['ikey']
+  kb_lang : ['en_AU']
   tag : ['ok']
-  duid : ['5a215835df204115ee3d2d4ec0c528aa', 'adad79631d9339915e3be1c9e783e82d', 'a2bb5434f3541bf5aa64186ec8c2b77f',
-          '920b56e9cadd743bfbbcb4126937e789']
+  duid : ['6dc17412c6244c1ab34c6046acfae482', 'fde301913dd141378c03b88ac9c22b4d','b7e9ecc1c7de43be9dcfc402c795028d',
+          '2c007a8064904c9e9d72a7e586b35d88','487ab2fb0df8675e2903e221486d07ff', 'bbbd37092d284309b2c73d784368ab24',
+          '2ae832d1d7f34df289b0039655137a30', 'cd29a8cefa0d48ccbaa2b120426f84ac']
 #  duid : [[4,0], [4,1],[4,2],[4,3]]
 assert:
 #  返回码(只能第一层)
@@ -22,7 +23,7 @@ assert:
 #  数据检查
 #  data_content : {'':''}
 #other:
-  version: 2043
+  version: 1477
   way: online
   host :
 

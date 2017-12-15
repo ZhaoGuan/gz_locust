@@ -48,7 +48,7 @@ class popup_test(TaskSet):
         url = 'https://www.baidu.com/'
         response = self.client.get(url)
 
-    @task(0)
+    @task(10)
     def case(self):
         # 随机获取数据
         single_data = all_data[random.choice(range(len(all_data)))]
@@ -68,7 +68,7 @@ class popup_test(TaskSet):
             else:
                 response.failure(response.text)
 
-    @task(10)
+    @task(0)
     def kika_backend(self):
         all_duid = ['a694d52e2e824419b7531e07a702ca25', '0978f8ccd3394981ba4ace5c6335bca6', '2f5011292c6849b79213c71221c84c78']
         duid = random.choice(all_duid)
