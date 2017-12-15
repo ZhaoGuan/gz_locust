@@ -48,7 +48,7 @@ class popup_test(TaskSet):
         url = 'https://www.baidu.com/'
         response = self.client.get(url)
 
-    @task(10)
+    @task(0)
     def case(self):
         # 随机获取数据
         single_data = all_data[random.choice(range(len(all_data)))]
@@ -62,6 +62,27 @@ class popup_test(TaskSet):
             app = single_data['app']
             header = a.set_header(duid, app=app, version=a.version, lang=lang, way=a.way)
             url = a.url_mosaic(single_data)
+            response = self.client.get(url, headers=header, catch_response=True)
+            if (a.asser_api(single_data, response, fail) is True) and ('hit' in response.text):
+                response.success()
+            else:
+                response.failure(response.text)
+
+    @task(10)
+    def case1(self):
+        # 随机获取数据
+        single_data = all_data[random.choice(range(len(all_data)))]
+        fail = []
+        if a.data == None or a.keys == None:
+            url = a.url
+            response = self.client.get(url, catch_response=True)
+        else:
+            lang = single_data['kb_lang']
+            duid = single_data['duid']
+            app = single_data['app']
+            header = a.set_header(duid, app=app, version=a.version, lang=lang, way=a.way)
+            # url = a.url_mosaic(single_data)
+            url = single_data['url'] + 'tag=' + single_data['tag'] + '&userId=' + single_data['duid']
             response = self.client.get(url, headers=header, catch_response=True)
             if (a.asser_api(single_data, response, fail) is True) and ('hit' in response.text):
                 response.success()
