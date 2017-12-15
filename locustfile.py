@@ -63,14 +63,15 @@ class popup_test(TaskSet):
             header = a.set_header(duid, app=app, version=a.version, lang=lang, way=a.way)
             url = a.url_mosaic(single_data)
             response = self.client.get(url, headers=header, catch_response=True)
-            if a.asser_api(single_data, response, fail) is True:
+            if (a.asser_api(single_data, response, fail) is True) and ('hit' in response.text):
                 response.success()
             else:
                 response.failure(response.text)
 
     @task(0)
     def kika_backend(self):
-        all_duid = ['a694d52e2e824419b7531e07a702ca25', '0978f8ccd3394981ba4ace5c6335bca6', '2f5011292c6849b79213c71221c84c78']
+        all_duid = ['a694d52e2e824419b7531e07a702ca25', '0978f8ccd3394981ba4ace5c6335bca6',
+                    '2f5011292c6849b79213c71221c84c78']
         duid = random.choice(all_duid)
         url = "http://172.31.16.27:8080/v1/app/{}/device/test/event/recent_num_sticker?range=0-3".format(
             duid)
@@ -80,8 +81,8 @@ class popup_test(TaskSet):
 class MyLocust(HttpLocust):
     task_set = popup_test
     # 任务的最小等待时间单位ms
-    min_wait = 1000
+    min_wait = 100
     # 任务的最大等待时间单位ms
-    max_wait = 1000
+    max_wait = 100
     # host = 'api.kikakeyboard.com'
     host = 'blau.kika-backend.com'
