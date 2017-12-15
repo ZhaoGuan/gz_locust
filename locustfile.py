@@ -86,10 +86,10 @@ class popup_test(TaskSet):
             url = a.url + 'tag=' + single_data['tag'] + '&userId=' + single_data[
                 'duid'] + '&sessionId=sticker' + shortuuid.uuid()
             response = self.client.get(url, headers=header, catch_response=True)
-            if (a.asser_api(single_data, response, fail) is True) and ('hit' in response.text):
-                response.success()
-            else:
-                response.failure(response.text)
+            # if (a.asser_api(single_data, response, fail) is True) and ('hit' in response.text):
+            #     response.success()
+            # else:
+            #     response.failure(response.text)
 
     @task(0)
     def kika_backend(self):
