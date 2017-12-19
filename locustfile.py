@@ -1075,8 +1075,9 @@ class popup_test(TaskSet):
     def case1(self):
         # 随机获取数据
         # single_data = all_data[random.choice(range(len(all_data)))]
-        url = data[random.choice(range(len(data)))]
+        url = data[random.choice(range(len(data)))]git
         response = self.client.get('http://172.31.28.21:8080/'+url)
+        print(response.text)
         fail = []
         # if a.data == None or a.keys == None:
         #     url = a.url
