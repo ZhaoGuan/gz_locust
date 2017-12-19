@@ -1533,8 +1533,8 @@ class popup_test(TaskSet):
     def case1(self):
         # 随机获取数据
         # single_data = all_data[random.choice(range(len(all_data)))]
-        # url = data[random.choice(range(len(data)))]
-        url = hit_data[random.choice(range(len(hit_data)))]
+        url = data[random.choice(range(len(data)))]
+        # url = hit_data[random.choice(range(len(hit_data)))]
         response = self.client.get('http://172.31.28.21:8080' + url)
         print(response.text)
         fail = []
