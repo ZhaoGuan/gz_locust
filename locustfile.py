@@ -1076,7 +1076,7 @@ class popup_test(TaskSet):
         # 随机获取数据
         # single_data = all_data[random.choice(range(len(all_data)))]
         url = data[random.choice(range(len(data)))]
-        response = self.client.get(url)
+        response = self.client.get('http://172.31.28.21:8080/'+url)
         fail = []
         # if a.data == None or a.keys == None:
         #     url = a.url
