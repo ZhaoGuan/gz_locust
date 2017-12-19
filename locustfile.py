@@ -1097,7 +1097,6 @@ class popup_test(TaskSet):
             # else:
             #     response.failure(response.text)
 
-    @task(10)
     # 足迹
     @task(0)
     def kika_backend(self):
