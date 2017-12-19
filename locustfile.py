@@ -5,7 +5,6 @@
 from locust import HttpLocust, TaskSet, task
 from case_generate import Http_Test, config_reader, get_duid_in_way
 import random
-import shortuuid
 
 # 放在引用前保证数据数量
 test_data = config_reader('./test_case')
