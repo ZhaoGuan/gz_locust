@@ -1,10 +1,9 @@
-master_host: http://127.0.0.1:8089/
+master_host: http://52.26.206.94:9090/
 dir : 20171117
 plan : [
         {'locust_count': 10, 'hatch_rate': 1},
-        {'locust_count': 20, 'hatch_rate': 1},
         {'locust_count': 30, 'hatch_rate': 1},
-        {'locust_count': 35, 'hatch_rate': 1}
+        {'locust_count': 50, 'hatch_rate': 2}
         ]
 #时间单位S
-duration : 60
+duration : 120

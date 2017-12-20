@@ -3,7 +3,7 @@
 
 # ------------服务压测内容设置------------
 from locust import HttpLocust, TaskSet, task
-from case_generate import Http_Test, config_reader, get_duid_in_way
+from case_generate import Http_Test, config_reader
 import random
 
 # 放在引用前保证数据数量
@@ -1508,52 +1508,33 @@ class popup_test(TaskSet):
         url = 'https://www.baidu.com/'
         response = self.client.get(url)
 
-    @task(0)
+    @task(10)
     def case(self):
         # 随机获取数据
         single_data = all_data[random.choice(range(len(all_data)))]
         fail = []
-        if a.data == None or a.keys == None:
+        if self.data == None or self.keys == None:
             url = a.url
-            response = self.client.get(url, catch_response=True)
+            response = self.client.request('get', url)
         else:
             lang = single_data['kb_lang']
             duid = single_data['duid']
             app = single_data['app']
-            header = a.set_header(duid, app=app, version=a.version, lang=lang, way=a.way)
-            url = a.url_mosaic(single_data)
-            response = self.client.get(url, headers=header, catch_response=True)
-            if (a.asser_api(single_data, response, fail) is True) and ('hit' in response.text):
-                response.success()
-            else:
-                response.failure(response.text)
+            version = int(single_data['version'])
+            header = a.kika_request.set_header(duid, app=app, version=version, lang=lang, way=self.way)
+            url = a.url_mosaic(data)
+            response = self.client.get('get', url, headers=header, catch_response=True)
+        if a.asser_api(single_data, response, fail) is True:
+            response.success()
+        else:
+            response.failure(response.text)
 
-    @task(10)
+    @task(0)
     def case1(self):
         # 随机获取数据
-        # single_data = all_data[random.choice(range(len(all_data)))]
         url = data[random.choice(range(len(data)))]
-        # url = hit_data[random.choice(range(len(hit_data)))]
         response = self.client.get('http://172.31.28.21:8080' + url)
         print(response.text)
-        fail = []
-        # if a.data == None or a.keys == None:
-        #     url = a.url
-        #     response = self.client.get(url, catch_response=True)
-        # else:
-        #     lang = single_data['kb_lang']
-        #     duid = single_data['duid']
-        #     app = single_data['app']
-        #     header = a.set_header(duid, app=app, version=a.version, lang=lang, way=a.way)
-        #     url = a.url_mosaic(single_data)
-        # url = a.url + 'tag=' + single_data['tag'] + '&userId=' + single_data[
-        #     'duid'] + '&sessionId=sticker1231231231231313123121231231231'
-        # response = self.client.get(url, headers=header)
-        # print(response.text)
-        # if (a.asser_api(single_data, response, fail) is True) and ('hit' in response.text):
-        #     response.success()
-        # else:
-        #     response.failure(response.text)
 
     # 足迹
     @task(0)

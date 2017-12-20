@@ -5,12 +5,12 @@
 # web0
 #url: http://54.70.186.123:8080/backend-content-sending/popup?
 # 离线服务器
-#url : http://kika-backend-sticker-web0.intranet.com/backend-content-sending/popup?
+url : http://kika-backend-sticker-web0.intranet.com/backend-content-sending/popup?
 # 算法172.31.28.21:8080
-url : http://172.31.28.21:8080/kafka/predict?
+#url : http://172.31.28.21:8080/kafka/predict?
 keys: ['kb_lang','tag','duid']
 data:
-  app: ['ikey']
+  app: ['kika','pro']
   kb_lang : ['en_AU']
   tag : ['ok']
   duid : ['6dc17412c6244c1ab34c6046acfae482', 'fde301913dd141378c03b88ac9c22b4d','b7e9ecc1c7de43be9dcfc402c795028d',
@@ -21,11 +21,13 @@ assert:
 #  返回码(只能第一层)
   code : {'key':'errorCode','value':0}
 #  字段格式
-  data_format : {"errorCode":'Int',"errorMsg":'Str',"data":{'tag':'&&&'}}
+  data_format : {
+    '{"data&type":"sticker"}':{'data': {'popup_duration': 'Int', 'stickers': [{'package_id': 'Str&$$$', 'tags': ['@@@'], 'scale_type': 'Int', 'source_text': 'Str&$$$', 'mp4': '$$$', 'name': '$$$', 'popup_duration': 'Int', 'icon_url': 'Str&$$$', 'image': {'height': 'Int', 'width': 'Int', 'url': 'Str'}, 'mark': 'Str', 'key': 'Str'}], 'magics': '$$$', 'extra': '@@@', 'type': 'Str'}, 'errorCode': 'Int', 'errorMsg': 'Str'},
+    '{"data&type":"magic"}':{'data': {'type': 'Str', 'magics': [{'key': 'Str', 'style': 'Str'}], 'stickers': '$$$', 'popup_duration': 'Int', 'extra': 'Str'}, 'errorMsg': 'Str', 'errorCode': 'Int'}
+    }
 #  数据检查
 #  data_content : {'':''}
-#other:
-  version: 1477
+other:
   way: online
-  host : api.kikakeyboard.com
+  host :
 
