@@ -1551,8 +1551,8 @@ class popup_test(TaskSet):
 class MyLocust(HttpLocust):
     task_set = popup_test
     # 任务的最小等待时间单位ms
-    min_wait = 1
+    min_wait = 1000
     # 任务的最大等待时间单位ms
-    max_wait = 1
+    max_wait = 1000
     host = 'api.kikakeyboard.com'
     # host = 'blau.kika-backend.com'
