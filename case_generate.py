@@ -12,7 +12,7 @@ import yaml
 import os
 
 from base_function.Inspection_method import Inspection_method
-from base_function.data_sqlite import *
+# from base_function.data_sqlite import *
 from base_function.kika_base_request import Kika_base_request
 
 
@@ -205,8 +205,8 @@ class Http_Test:
             fail.append(fail_data)
 
     # 请求内容集合
-    def all_response(self, data, response):
-        instet_table(data, response.text)
+    # def all_response(self, data, response):
+    #     instet_table(data, response.text)
 
     # 发送请求
     def url_request(self, data, fail):
