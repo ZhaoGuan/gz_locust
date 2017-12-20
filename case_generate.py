@@ -29,7 +29,7 @@ Inspection_method = Inspection_method()
 class Http_Test:
     def __init__(self, config):
         self.config = config
-        self.cycle_times = self.config['cycle_times']
+        # self.cycle_times = self.config['cycle_times']
         self.url = self.config['url']
         try:
             self.keys = self.config['keys']

@@ -1513,7 +1513,7 @@ class popup_test(TaskSet):
         # 随机获取数据
         single_data = all_data[random.choice(range(len(all_data)))]
         fail = []
-        if self.data == None or self.keys == None:
+        if a.data == None or a.keys == None:
             url = a.url
             response = self.client.request('get', url)
         else:
@@ -1521,13 +1521,14 @@ class popup_test(TaskSet):
             duid = single_data['duid']
             app = single_data['app']
             version = int(single_data['version'])
-            header = a.kika_request.set_header(duid, app=app, version=version, lang=lang, way=self.way)
-            url = a.url_mosaic(data)
-            response = self.client.get('get', url, headers=header, catch_response=True)
-        if a.asser_api(single_data, response, fail) is True:
-            response.success()
-        else:
-            response.failure(response.text)
+            header = a.kika_request.set_header(duid, app=app, version=version, lang=lang, way=a.way)
+            url = a.url_mosaic(single_data)
+            response = self.client.get(url, headers=header, catch_response=True)
+            a.asser_api(single_data, response, fail)
+            if len(fail) == 0:
+                response.success()
+            else:
+                response.failure(response.text)
 
     @task(0)
     def case1(self):
