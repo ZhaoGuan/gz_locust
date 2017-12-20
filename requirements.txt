@@ -2,4 +2,3 @@ locust
 python-daemon
 pyyaml
 shortuuid
-sqlite3

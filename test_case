@@ -5,9 +5,10 @@
 # web0
 #url: http://54.70.186.123:8080/backend-content-sending/popup?
 # 离线服务器
-url : http://kika-backend-sticker-web0.intranet.com/backend-content-sending/popup?
+#url : http://kika-backend-sticker-web0.intranet.com/backend-content-sending/popup?
 # 算法172.31.28.21:8080
 #url : http://172.31.28.21:8080/kafka/predict?
+url : http://52.43.155.219:9090/backend-content-sending/popup?
 keys: ['kb_lang','tag','duid']
 data:
   app: ['kika','pro']
