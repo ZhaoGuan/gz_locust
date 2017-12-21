@@ -1074,7 +1074,7 @@ class popup_test(TaskSet):
     def case1(self):
         # 随机获取数据
         url = data[random.choice(range(len(data)))]
-        response = self.client.get('http://172.31.28.21:8080' + url)
+        response = self.client.get('http://172.31.21.95:8080' + url)
         print(response.text)
 
     # 足迹
