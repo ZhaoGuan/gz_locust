@@ -184,3 +184,4 @@ class Run_locust_test_plan():
 
 if __name__ == "__main__":
     Run_locust_test_plan().run_plan()
+    # Run_locust_test_plan.get_all_report()

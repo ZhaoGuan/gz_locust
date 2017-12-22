@@ -1,14 +1,11 @@
 master_host: http://52.26.206.94:9090/
 dir : 20171220
 plan : [
-        {'locust_count': 500, 'hatch_rate': 10},
-        {'locust_count': 1000, 'hatch_rate': 10},
-        {'locust_count': 1200, 'hatch_rate': 10},
-        {'locust_count': 1500, 'hatch_rate': 10},
-        {'locust_count': 1700, 'hatch_rate': 10},
-        {'locust_count': 2000, 'hatch_rate': 10},
-        {'locust_count': 2200, 'hatch_rate': 10},
-        {'locust_count': 2400, 'hatch_rate': 10}
+        {'locust_count': 10, 'hatch_rate': 10},
+        {'locust_count': 30, 'hatch_rate': 10},
+        {'locust_count': 50, 'hatch_rate': 10},
+        {'locust_count': 70, 'hatch_rate': 10},
+        {'locust_count': 100, 'hatch_rate': 10}
         ]
 #时间单位S
-duration : 120
+duration : 60

@@ -1070,7 +1070,7 @@ class popup_test(TaskSet):
             else:
                 response.failure(response.text)
 
-    @task(10)
+    @task(0)
     def case1(self):
         # 随机获取数据
         url = data[random.choice(range(len(data)))]
