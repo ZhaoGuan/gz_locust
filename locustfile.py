@@ -1048,7 +1048,7 @@ class popup_test(TaskSet):
         url = 'https://www.baidu.com/'
         response = self.client.get(url)
 
-    @task(0)
+    @task(10)
     def case(self):
         # 随机获取数据
         single_data = all_data[random.choice(range(len(all_data)))]
