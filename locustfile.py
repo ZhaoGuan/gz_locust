@@ -1085,7 +1085,7 @@ class popup_test(TaskSet):
         duid = random.choice(all_duid)
         # url = "http://172.31.16.27:8080/v1/app/{}/device/test/event/recent_num_sticker?range=0-3".format(
         #     duid)
-        url = 'http://http://kika-data-blau-web0.intranet.com:8080/v1/app/4e5ab3a6d2140457e0423a28a094b1fd/device/{}/event/recent_tag_num_sticker?range=0-3&type=hola'
+        url = 'http://kika-data-blau-web0.intranet.com:8080/v1/app/4e5ab3a6d2140457e0423a28a094b1fd/device/{}/event/recent_tag_num_sticker?range=0-3&type=hola'
         response = self.client.get(url)
 
 
