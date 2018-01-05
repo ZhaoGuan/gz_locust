@@ -1048,7 +1048,7 @@ class popup_test(TaskSet):
         url = 'https://www.baidu.com/'
         response = self.client.get(url)
 
-    @task(10)
+    @task(0)
     def case(self):
         # 随机获取数据
         single_data = all_data[random.choice(range(len(all_data)))]
@@ -1078,13 +1078,14 @@ class popup_test(TaskSet):
         print(response.text)
 
     # 足迹
-    @task(0)
+    @task(10)
     def kika_backend(self):
         all_duid = ['a694d52e2e824419b7531e07a702ca25', '0978f8ccd3394981ba4ace5c6335bca6',
                     '2f5011292c6849b79213c71221c84c78']
         duid = random.choice(all_duid)
-        url = "http://172.31.16.27:8080/v1/app/{}/device/test/event/recent_num_sticker?range=0-3".format(
-            duid)
+        # url = "http://172.31.16.27:8080/v1/app/{}/device/test/event/recent_num_sticker?range=0-3".format(
+        #     duid)
+        url = 'http://blau.kika-backend.com/v1/app/4e5ab3a6d2140457e0423a28a094b1fd/device/{}/event/recent_tag_num_sticker?range=0-3&type=hola'
         response = self.client.get(url)
 
 
@@ -1094,5 +1095,5 @@ class MyLocust(HttpLocust):
     min_wait = 100
     # 任务的最大等待时间单位ms
     max_wait = 1000
-    host = 'api.kikakeyboard.com'
-    # host = 'blau.kika-backend.com'
+    # host = 'api.kikakeyboard.com'
+    host = 'blau.kika-backend.com'
