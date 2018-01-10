@@ -1091,6 +1091,7 @@ class popup_test(TaskSet):
             duid)
         response = self.client.get(url)
 
+    @task(10)
     # 强哥
     def kika_backend(self):
         all_duid = ['a694d52e2e824419b7531e07a702ca25', '0978f8ccd3394981ba4ace5c6335bca6',
