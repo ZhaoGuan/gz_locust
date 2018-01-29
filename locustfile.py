@@ -1104,7 +1104,7 @@ class popup_test(TaskSet):
         url = 'http://172.31.23.134:8080/model-sticker/recommend/popup?userId={}&tag=ok&sessionId=123&kb_lang=en_US&type=0'.format(
             duid)
         response = self.client.get(url)
-        print(response)
+        print(response.json)
 
 
 class MyLocust(HttpLocust):
