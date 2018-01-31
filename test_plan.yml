@@ -1,5 +1,5 @@
 master_host: http://52.26.206.94:9090/
-dir : 20180129
+dir : 20180131
 plan : [
         {'locust_count': 10, 'hatch_rate': 1},
         {'locust_count': 30, 'hatch_rate': 1},
