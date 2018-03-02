@@ -6,24 +6,25 @@ from locust import Locust, TaskSet, events, task
 
 
 class RedisClient(redis.Redis):
-    def __getattr__(self, host, port=6379, db=0):
-        func = redis.Redis.__getattr__(self, host, port, db)
+    def __getattr__(self):
+        func = self
 
+        # func = redis.Redis._(self, host, port, db)
         def wrapper(*args, **kwargs):
             start_time = time.time()
             try:
-                result = func(*args, **kwargs)
+                print('!!!!!!!!!!!!!!!!!!!!!!!!!')
+                result = func
+                # result = func(*args, **kwargs)
             except redis.exceptions as e:
                 total_time = int((time.time() - start_time) * 1000)
-                events.request_failure.fire(request_type="redis", host=host, port=port, db=db, response_time=total_time,
+                events.request_failure.fire(request_type="redis", response_time=total_time,
                                             exception=e)
             else:
                 total_time = int((time.time() - start_time) * 1000)
-                events.request_success.fire(request_type="redis", host=host, port=port, db=db, response_time=total_time,
+                events.request_success.fire(request_type="redis", response_time=total_time,
                                             response_length=0)
                 print('!!!!!!!!!!!!!!!!!!!!!!!!!')
-
-            return result
 
         return wrapper
 
