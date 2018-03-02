@@ -23,7 +23,7 @@ class RedisClient():
 class RedisLocust(Locust):
     def __init__(self, *args, **kwargs):
         super(RedisLocust, self).__init__(*args, **kwargs)
-        self.client = RedisLocust(host=self.host, port=6379, db=0)
+        self.client = RedisClient(host=self.host, port=6379, db=0)
 
 
 class Redis_test(RedisLocust):
