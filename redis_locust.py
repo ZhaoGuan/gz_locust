@@ -5,41 +5,21 @@ import redis
 from locust import Locust, TaskSet, events, task
 
 
-class RedisClient(redis):
-    # def __int__(self, host, port=6379, db=0):
-    #     self.host = host
-    #     self.port = port
-    #     self.db = host
-    #     self.r = redis.Redis(host=self.host, port=self.port, db=self.db)
-    #
-    # def get_lrange(self, keys, start=0, end=10):
-    #     try:
-    #         result = self.r.lrange(keys, start=start, end=end)
-    #     except xmlrpclib.Fault as e:
-    #         total_time = int((time.time() - start_time) * 1000)
-    #         events.request_failure.fire(request_type="xmlrpc", name=name, response_time=total_time, exception=e)
-    #     else:
-    #         total_time = int((time.time() - start_time) * 1000)
-    #         events.request_success.fire(request_type="xmlrpc", name=name, response_time=total_time,
-    #                                     response_length=0)
-    #     return data
-    #
-    # def get_zrange(self, keys, start=0, end=10):
-    #     data = self.r.zrange(keys, start=start, end=end)
-    #     return data
-    def __getattr__(self, name):
-        func = redis.Redis.__getattr__(self, name)
+class RedisClient(redis.Redis):
+    def __getattr__(self, host, port, db):
+        func = redis.Redis.__getattr__(self, host, port, db)
 
         def wrapper(*args, **kwargs):
             start_time = time.time()
             try:
                 result = func(*args, **kwargs)
-            except redis.Fault as e:
+            except redis.exceptions as e:
                 total_time = int((time.time() - start_time) * 1000)
-                events.request_failure.fire(request_type="redis", name=name, response_time=total_time, exception=e)
+                events.request_failure.fire(request_type="redis", host=host, port=port, db=db, response_time=total_time,
+                                            exception=e)
             else:
                 total_time = int((time.time() - start_time) * 1000)
-                events.request_success.fire(request_type="redis", name=name, response_time=total_time,
+                events.request_success.fire(request_type="redis", host=host, port=port, db=db, response_time=total_time,
                                             response_length=0)
 
         return wrapper
@@ -56,7 +36,7 @@ class Redis_test(RedisLocust):
     min_wait = 100
     max_wait = 1000
 
-    class tast_set(TaskSet):
+    class task_set(TaskSet):
         @task(10)
         def duid_data(self):
             data = self.client.get_lrange('b8c4abcf8f45468e95982c3a598c3f94')
