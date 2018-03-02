@@ -13,13 +13,15 @@ class RedisClient(redis.Redis):
             start_time = time.time()
             try:
                 result = func(*args, **kwargs)
+                total_time = int((time.time() - start_time) * 1000)
+                events.request_success.fire(request_type="redis", host=host, port=port, db=db, response_time=total_time)
             except redis.exceptions as e:
                 total_time = int((time.time() - start_time) * 1000)
-                events.request_failure.fire(host=host, port=port, db=db, response_time=total_time,
+                events.request_failure.fire(request_type="redis", host=host, port=port, db=db, response_time=total_time,
                                             exception=e)
             else:
                 total_time = int((time.time() - start_time) * 1000)
-                events.request_success.fire(host=host, port=port, db=db, response_time=total_time)
+                events.request_success.fire(request_type="redis", host=host, port=port, db=db, response_time=total_time)
 
         return wrapper
 
