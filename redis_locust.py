@@ -15,19 +15,21 @@ class StrictRedis_locsut(StrictRedis):
         connection = pool.get_connection(command_name, **options)
         try:
             connection.send_command(*args)
+            result = self.parse_response(connection, command_name, **options)
             total_time = int((time.time() - start_time) * 1000)
-            events.request_success.fire(request_type="redis", name=command_name, response_time=total_time,
+            events.request_success.fire(request_type="redis", name=args[1], response_time=total_time,
                                         response_length=0)
-            return self.parse_response(connection, command_name, **options)
+            return resultgit
         except (ConnectionError, TimeoutError) as e:
             connection.disconnect()
             if not connection.retry_on_timeout and isinstance(e, TimeoutError):
                 raise
             connection.send_command(*args)
+            result = self.parse_response(connection, command_name, **options)
             total_time = int((time.time() - start_time) * 1000)
-            events.request_failure.fire(request_type="redis", name=command_name, response_time=total_time,
+            events.request_failure.fire(request_type="redis", name=args[1], response_time=total_time,
                                         exception=e)
-            return self.parse_response(connection, command_name, **options)
+            return result
         finally:
             pool.release(connection)
 
