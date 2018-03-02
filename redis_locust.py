@@ -1,36 +1,36 @@
 # -*- coding: utf-8 -*-
 # __author__ = 'Gz'
 import time
-import redis
+from redis.client import Redis, StrictRedis
+from redis.exceptions import RedisError
 from locust import Locust, TaskSet, events, task
 
 
-class RedisClient(redis.Redis):
-    def __getattr__(self):
-        func = self
+class StrictRedis_locsut(StrictRedis):
+    def __getattr__(self, *args, **options):
+        func = StrictRedis.execute_command(self, *args, **options)
 
-        # func = redis.Redis._(self, host, port, db)
         def wrapper(*args, **kwargs):
             start_time = time.time()
             try:
-                print('!!!!!!!!!!!!!!!!!!!!!!!!!')
-                result = func
-                # result = func(*args, **kwargs)
-            except redis.exceptions as e:
+                result = func(*args, **kwargs)
+            except RedisError as e:
                 total_time = int((time.time() - start_time) * 1000)
-                events.request_failure.fire(request_type="redis", response_time=total_time,
-                                            exception=e)
+                events.request_failure.fire(request_type="redis", response_time=total_time, exception=e)
             else:
                 total_time = int((time.time() - start_time) * 1000)
                 events.request_success.fire(request_type="redis", response_time=total_time,
                                             response_length=0)
-                print('!!!!!!!!!!!!!!!!!!!!!!!!!')
 
         return wrapper
 
 
+class RedisClient(StrictRedis_locsut):
+    Redis(StrictRedis_locsut)
+
+
 class RedisLocust(Locust):
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         super(RedisLocust, self).__init__()
         self.client = RedisClient(self.host, port=6379, db=0)
 
