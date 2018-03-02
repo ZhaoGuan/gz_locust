@@ -23,8 +23,9 @@ class RedisClient(redis.Redis):
                                             response_length=0)
                 print('!!!!!!!!!!!!!!!!!!!!!!!!!')
 
-        return wrapper
+            return result
 
+        return wrapper
 
 
 class RedisLocust(Locust):
