@@ -39,10 +39,10 @@ class Redis_test(RedisLocust):
     class task_set(TaskSet):
         @task(10)
         def duid_data(self):
-            data = self.client.lrange('b8c4abcf8f45468e95982c3a598c3f94')
+            data = self.client.lrange('b8c4abcf8f45468e95982c3a598c3f94', 0, 10)
             print(data)
 
         @task(0)
         def duid_tag_data(self):
-            data = self.client.zrange('sip_b8c4abcf8f45468e95982c3a598c3f94')
+            data = self.client.zrange('sip_b8c4abcf8f45468e95982c3a598c3f94', 0, 10)
             print(data)
