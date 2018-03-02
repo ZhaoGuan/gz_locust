@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # __author__ = 'Gz'
 import time
-import xmlrpclib
+import xmlrpc.client as xmlrpclib
 
 from locust import Locust, TaskSet, events, task
 
