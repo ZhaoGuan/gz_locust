@@ -7,22 +7,29 @@ from locust import Locust, TaskSet, events, task
 
 
 class StrictRedis_locsut(StrictRedis):
-    def __getattr__(self, *args, **options):
-        func = StrictRedis.execute_command(self, *args, **options)
-
-        def wrapper(*args, **kwargs):
-            start_time = time.time()
-            try:
-                result = func(*args, **kwargs)
-            except RedisError as e:
-                total_time = int((time.time() - start_time) * 1000)
-                events.request_failure.fire(request_type="redis", response_time=total_time, exception=e)
-            else:
-                total_time = int((time.time() - start_time) * 1000)
-                events.request_success.fire(request_type="redis", response_time=total_time,
-                                            response_length=0)
-
-        return wrapper
+    def execute_command(self, *args, **options):
+        "Execute a command and return a parsed response"
+        start_time = time.time()
+        pool = self.connection_pool
+        command_name = args[0]
+        connection = pool.get_connection(command_name, **options)
+        try:
+            connection.send_command(*args)
+            total_time = int((time.time() - start_time) * 1000)
+            events.request_success.fire(request_type="redis", name=command_name, response_time=total_time,
+                                        response_length=0)
+            return self.parse_response(connection, command_name, **options)
+        except (ConnectionError, TimeoutError) as e:
+            connection.disconnect()
+            if not connection.retry_on_timeout and isinstance(e, TimeoutError):
+                raise
+            connection.send_command(*args)
+            total_time = int((time.time() - start_time) * 1000)
+            events.request_failure.fire(request_type="redis", name=command_name, response_time=total_time,
+                                        exception=e)
+            return self.parse_response(connection, command_name, **options)
+        finally:
+            pool.release(connection)
 
 
 class RedisClient(StrictRedis_locsut):
