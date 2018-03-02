@@ -15,12 +15,11 @@ class RedisClient(redis.Redis):
                 result = func(*args, **kwargs)
             except redis.exceptions as e:
                 total_time = int((time.time() - start_time) * 1000)
-                events.request_failure.fire(request_type="redis", host=host, port=port, db=db, response_time=total_time,
+                events.request_failure.fire(host=host, port=port, db=db, response_time=total_time,
                                             exception=e)
             else:
                 total_time = int((time.time() - start_time) * 1000)
-                events.request_success.fire(request_type="redis", host=host, port=port, db=db, response_time=total_time,
-                                            response_length=0)
+                events.request_success.fire(host=host, port=port, db=db, response_time=total_time)
 
         return wrapper
 
@@ -39,10 +38,10 @@ class Redis_test(RedisLocust):
     class task_set(TaskSet):
         @task(10)
         def duid_data(self):
-            data = self.client.lrange('b8c4abcf8f45468e95982c3a598c3f94', 0, 10)
+            data = self.client.lrange('USER_RECENT_NUM_b4b7d7cc9454464b938177d412874ce9', 0, 10)
             print(data)
 
         @task(0)
         def duid_tag_data(self):
-            data = self.client.zrange('sip_b8c4abcf8f45468e95982c3a598c3f94', 0, 10)
+            data = self.client.zrange('USER_RECENT_TAG_NUM_na_a1be32a10c414065a20e7b755018150c', 0, 10)
             print(data)
