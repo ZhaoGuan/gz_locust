@@ -34,8 +34,10 @@ class Redis_test(RedisLocust):
     class tast_set(TaskSet):
         @task(10)
         def duid_data(self):
-            self.client.get_lrange('b8c4abcf8f45468e95982c3a598c3f94')
+            data = self.client.get_lrange('b8c4abcf8f45468e95982c3a598c3f94')
+            print(data)
 
         @task(0)
         def duid_tag_data(self):
-            self.client.get_zrange('sip_b8c4abcf8f45468e95982c3a598c3f94')
+            data = self.client.get_zrange('sip_b8c4abcf8f45468e95982c3a598c3f94')
+            print(data)
