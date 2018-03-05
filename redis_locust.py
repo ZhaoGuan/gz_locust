@@ -114,7 +114,8 @@ class Redis_test(RedisLocust):
                     'USER_RECENT_NUM_4fc38c2958764702825f7f6c2168ecf1',
                     'USER_RECENT_NUM_15c10e66c37243e4998eb6cc40ae75c0']
             key = random.choice(keys)
-            data = self.client.lrange(key, 0, 10)
+            # data = self.client.lrange(key, 0, 10)
+            data = self.client.lrange('USER_RECENT_NUM_3f6af76a28144d019d617be41618411e', 0, 10)
             print(data)
 
         @task(0)
