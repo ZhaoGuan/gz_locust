@@ -47,8 +47,9 @@ class RedisLocust(Locust):
     def __init__(self):
         super(RedisLocust, self).__init__()
         # self.client = RedisClient(self.host, port=6379, db=0)
-        pool = redis.ConnectionPool(StrictRedis_locsut, max_connections=200)
-        self.client = RedisClient(pool).pipeline()
+        pool = redis.ConnectionPool(self.host, port=6379, db=0, max_connections=200)
+        R = RedisClient(pool)
+        self.client = R.pipeline()
 
 
 class Redis_test(RedisLocust):
