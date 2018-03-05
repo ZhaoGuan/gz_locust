@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # __author__ = 'Gz'
 import time
+import redis
 from redis.client import Redis, StrictRedis
 from redis.exceptions import RedisError
 from locust import Locust, TaskSet, events, task
@@ -46,7 +47,8 @@ class RedisLocust(Locust):
     def __init__(self):
         super(RedisLocust, self).__init__()
         # self.client = RedisClient(self.host, port=6379, db=0)
-        self.client = RedisClient(self.host, port=6379, db=1)
+        pool = redis.ConnectionPool(StrictRedis_locsut, max_connections=200)
+        self.client = RedisClient(pool).pipeline()
 
 
 class Redis_test(RedisLocust):
