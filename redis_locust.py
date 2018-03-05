@@ -3,7 +3,10 @@
 import time
 import redis
 from redis.client import Redis, StrictRedis
-from redis.exceptions import RedisError
+from redis.connection import (
+    BlockingConnectionPool,
+    ConnectionPool,
+    Connection, )
 from locust import Locust, TaskSet, events, task
 import random
 
@@ -39,17 +42,44 @@ class StrictRedis_locsut(StrictRedis):
             pool.release(connection)
 
 
-class RedisClient(StrictRedis_locsut):
-    Redis(StrictRedis_locsut)
+class RedisClient(Redis):
+    # Redis(StrictRedis_locsut)
+    def execute_command(self, *args, **options):
+        start_time = time.time()
+        pool = self.connection_pool
+        command_name = args[0]
+        connection = pool.get_connection(command_name, **options)
+        try:
+            connection.send_command(*args)
+            result = self.parse_response(connection, command_name, **options)
+            total_time = float((time.time() - start_time))
+            total_time_int = int((time.time() - start_time) * 1000)
+            print(total_time)
+            events.request_success.fire(request_type="redis", name=args[1], response_time=total_time_int,
+                                        response_length=0)
+            return result
+        except (ConnectionError, TimeoutError) as e:
+            connection.disconnect()
+            if not connection.retry_on_timeout and isinstance(e, TimeoutError):
+                raise
+            connection.send_command(*args)
+            result = self.parse_response(connection, command_name, **options)
+            total_time = float((time.time() - start_time))
+            total_time_int = int((time.time() - start_time) * 1000)
+            print(total_time)
+            events.request_failure.fire(request_type="redis", name=args[1], response_time=total_time_int,
+                                        exception=e)
+            return result
+        finally:
+            pool.release(connection)
 
 
 class RedisLocust(Locust):
     def __init__(self):
         super(RedisLocust, self).__init__()
-        # self.client = RedisClient(self.host, port=6379, db=0)
-        pool = redis.ConnectionPool(self.host, port=6379, db=0, max_connections=200)
-        R = RedisClient(pool)
-        self.client = R.pipeline()
+        # self.client = RedisClient(self.host, port=6379, db=1)
+        pool = redis.ConnectionPool(self.host, port=6379, db=1, max_connections=200)
+        self.client = RedisClient(connection_pool=pool).pipeline()
 
 
 class Redis_test(RedisLocust):
