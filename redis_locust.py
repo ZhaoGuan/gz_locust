@@ -78,8 +78,9 @@ class RedisLocust(Locust):
     def __init__(self):
         super(RedisLocust, self).__init__()
         # self.client = RedisClient(self.host, port=6379, db=1)
-        pool = redis.ConnectionPool(self.host, port=6379, db=1, max_connections=200)
-        self.client = RedisClient(connection_pool=pool).pipeline()
+        # 修改后传值有问题所以需要两个都填写
+        pool = redis.ConnectionPool(host=self.host, port=6379, db=1, max_connections=200)
+        self.client = RedisClient(host=self.host, port=6379, db=1, connection_pool=pool)
 
 
 class Redis_test(RedisLocust):
