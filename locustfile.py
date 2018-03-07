@@ -588,7 +588,7 @@ class popup_test(TaskSet):
                     '3b6f84c73627409a9a225043096f6d94', '9f370e95f00e4145be7a9ba22e222930',
                     '802b4c485bcd4712b43e4faf5970e395', 'd66910ade35546cd95fe9e7662d3b4f1']
         duid = random.choice(all_duid)
-        url = 'http://172.31.21.219:8080/model-sticker/recommend/popup?userId={}&tag=lol&sessionId=123&language=en&country=us&product&kika'.format(
+        url = 'http://172.31.21.219:8080/model-sticker/recommend/popup?userId={}&tag=lol&sessionId=123&language=en&country=us&product=kika'.format(
             duid)
         # url = 'http://52.43.155.219:8080/model-sticker/recommend/popup?userId={}&tag=lol&sessionId=123&language=en&country=test'.format(
         #     duid)
