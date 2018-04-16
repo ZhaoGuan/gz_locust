@@ -3,10 +3,6 @@
 import time
 import redis
 from redis.client import Redis, StrictRedis
-from redis.connection import (
-    BlockingConnectionPool,
-    ConnectionPool,
-    Connection, )
 from locust import Locust, TaskSet, events, task
 import random
 
