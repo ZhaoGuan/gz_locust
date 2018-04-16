@@ -17,7 +17,7 @@ class kafka_producer_Client():
     def send_kafka(self, item, message):
         start_time = time.time()
         total_time = int((time.time() - start_time) * 1000)
-        events.request_success.fire(request_type="kafka", response_time=total_time,
+        events.request_success.fire(request_type="kafka", response_time=total_time, name=message,
                                     response_length=0)
         self.producer.send(item, bytes(message, 'utf-8'))
 
