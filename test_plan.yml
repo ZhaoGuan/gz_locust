@@ -1,10 +1,11 @@
-master_host: http://localhost:8089/
-dir : 20180305
+master_host: http://52.26.206.94:9090/
+dir : 20180308
 plan : [
 #        {'locust_count': 10, 'hatch_rate': 5},
         {'locust_count': 50, 'hatch_rate': 10},
         {'locust_count': 80, 'hatch_rate': 10},
         {'locust_count': 100, 'hatch_rate': 10},
+        {'locust_count': 150, 'hatch_rate': 10}
         ]
 #时间单位S
 duration : 180
