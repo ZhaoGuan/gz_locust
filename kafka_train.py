@@ -30,8 +30,8 @@ class kafukaLocust(Locust):
 
 class kafka_test(kafukaLocust):
     host = ''
-    min_wait = 100
-    max_wait = 1000
+    min_wait = 0
+    max_wait = 100
 
     class task_set(TaskSet):
         @task(10)
