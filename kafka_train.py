@@ -20,6 +20,7 @@ class kafka_producer_Client():
         events.request_success.fire(request_type="kafka", response_time=total_time, name=message,
                                     response_length=0)
         self.producer.send(item, bytes(message, 'utf-8'))
+        self.producer.flush()
 
 
 class kafukaLocust(Locust):
@@ -30,7 +31,7 @@ class kafukaLocust(Locust):
 
 class kafka_test(kafukaLocust):
     host = ''
-    min_wait = 0
+    min_wait = 10
     max_wait = 100
 
     class task_set(TaskSet):
