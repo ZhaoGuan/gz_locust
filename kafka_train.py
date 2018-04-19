@@ -31,7 +31,7 @@ class kafukaLocust(Locust):
 
 class kafka_test(kafukaLocust):
     host = ''
-    min_wait = 100
+    min_wait = 1000
     max_wait = 1000
 
     class task_set(TaskSet):
