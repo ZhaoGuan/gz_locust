@@ -84,7 +84,7 @@ class popup_test(TaskSet):
             duid)
         response = self.client.get(url)
 
-    @task(10)
+    @task(0)
     # 强哥
     def kika_backend(self):
         all_duid = ['2259d9151ebb4b50bc245bb42959baf7', '4aa45fe3934d4d608d870fe02079f69e',
@@ -1000,6 +1000,18 @@ class popup_test(TaskSet):
         #     duid)
         response = self.client.get(url)
         print(response.text)
+
+    # gif search
+    @task(10)
+    def gif_search(self):
+        tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "😘😘", "?", "??", "???"]
+        lang = ['en', 'es', 'in', 'pt', 'fr', 'ru', 'el', 'mn']
+        url = 'http://kika-backend-sticker-web0.intranet.com:8080/backend-content-sending/v1/gifsticker/search?lang=' + random.choice(
+            lang) + '&tag=' + random.choice(
+            tags) + '&offset=' + str(random.choice(range(0, 50))) + '&limite=' + str(random.choice(range(0, 50)))
+        print(url)
+        response = self.client.get(url)
+        print(response)
 
 
 class MyLocust(HttpLocust):
