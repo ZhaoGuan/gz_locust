@@ -1002,14 +1002,23 @@ class popup_test(TaskSet):
         print(response.text)
 
     # gif search
-    @task(10)
+    @task(0)
     def gif_search(self):
         tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "😘😘", "?", "??", "???"]
         lang = ['en', 'es', 'in', 'pt', 'fr', 'ru', 'el', 'mn']
         url = 'http://kika-backend-sticker-web0.intranet.com:8080/backend-content-sending/v1/gifsticker/search?lang=' + random.choice(
             lang) + '&tag=' + random.choice(
-            tags) + '&offset=' + str(random.choice(range(0, 50))) + '&limite=' + str(random.choice(range(0, 50)))
+            tags) + '&offset=' + str(random.choice(range(1, 50))) + '&limite=' + str(random.choice(range(1, 50)))
         print(url)
+        response = self.client.get(url)
+        print(response)
+    @task(10)
+    def search(self):
+        tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "😘😘", "?", "??", "???"]
+        # giphy
+        url = 'http://api.giphy.com/v1/gifs/search?q='+random.choice(tags) +'&api_key=3otOKnzEUBswRmEYr6&limit='+str(random.choice(range(1, 50)))+'&ffset='+str(random.choice(range(0, 50)))
+        # tenor
+        url = 'https://api.tenor.com/v1/search?q='+random.choice(tags)+'&api_key=WL0AFGT9P4D1&limit='+str(random.choice(range(1, 50)))+'&pos='+str(random.choice(range(0, 50)))
         response = self.client.get(url)
         print(response)
 
@@ -1022,5 +1031,6 @@ class MyLocust(HttpLocust):
     max_wait = 1000
     # host = 'api.kikakeyboard.com'
     # host = 'blau.kika-backend.com'
-    host = 'kika-data-blau-web0.intranet.com'
+    # host = 'kika-data-blau-web0.intranet.com'
+    host = 'api.giphy.com'
     # host = 'https://www.baidu.com/'
