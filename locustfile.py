@@ -5,6 +5,7 @@
 from locust import HttpLocust, TaskSet, task
 from case_generate import Http_Test, config_reader
 import random
+import json
 
 # 放在引用前保证数据数量
 test_data = config_reader('./test_case')
@@ -1014,14 +1015,21 @@ class popup_test(TaskSet):
             tags) + '&offset=' + str(random.choice(range(1, 50))) + '&limite=' + str(random.choice(range(1, 50)))
         print(url)
         response = self.client.get(url)
-        print(response)
-    @task()
+        with pop as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
+
+    @task(0)
     def search(self):
         tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "😘😘", "?", "??", "???"]
         # giphy
         # url = 'http://api.giphy.com/v1/gifs/search?q='+random.choice(tags) +'&api_key=3otOKnzEUBswRmEYr6&limit='+str(random.choice(range(1, 50)))+'&ffset='+str(random.choice(range(0, 50)))
         # tenor
-        url = 'https://api.tenor.com/v1/search?q='+random.choice(tags)+'&api_key=WL0AFGT9P4D1&limit='+str(random.choice(range(1, 50)))+'&pos='+str(random.choice(range(0, 50)))
+        url = 'https://api.tenor.com/v1/search?q=' + random.choice(tags) + '&api_key=WL0AFGT9P4D1&limit=' + str(
+            random.choice(range(1, 50))) + '&pos=' + str(random.choice(range(0, 50)))
         response = self.client.get(url)
         print(response)
 
