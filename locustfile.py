@@ -1012,7 +1012,7 @@ class popup_test(TaskSet):
         #     tags) + '&offset=' + str(random.choice(range(1, 50))) + '&limite=' + str(random.choice(range(1, 50)))
         url = 'http://172.31.21.26:8080/v1/gifsticker/search?lang=' + random.choice(
             lang) + '&tag=' + random.choice(
-            tags) + '&offset=' + str(random.choice(range(1, 50))) + '&limite=' + str(random.choice(range(1, 50)))
+            tags) + '&offset=' + str(0) + '&limite=' + str(10)
         print(url)
         response = self.client.get(url)
         try:
