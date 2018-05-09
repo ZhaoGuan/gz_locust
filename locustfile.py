@@ -1015,12 +1015,11 @@ class popup_test(TaskSet):
             tags) + '&offset=' + str(random.choice(range(1, 50))) + '&limite=' + str(random.choice(range(1, 50)))
         print(url)
         response = self.client.get(url)
-        with pop as response:
-            try:
-                if response.json()['errorMsg'] != 'ok':
-                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-            except:
-                pass
+        try:
+            if response.json()['errorMsg'] != 'ok':
+                response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        except:
+            pass
 
     @task(0)
     def search(self):
