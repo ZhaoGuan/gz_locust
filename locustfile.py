@@ -1120,7 +1120,9 @@ class popup_test(TaskSet):
         duid = random.choice(hit)
         # url = 'http://172.31.23.134:10010/recommend/popup?userId={}&tag=lol&sessionId=123&language=en&country=us&product=kika'.format(
         #     duid)
-        url = 'http://172.31.23.134:10010/recommend/popup?sessionId=123&tag=ok&userId={}&language=pt&type=0'.format(
+        # url = 'http://172.31.23.134:10010/recommend/popup?sessionId=123&tag=ok&userId={}&language=pt&type=0'.format(
+        #     duid)
+        url = 'http://172.31.23.134:8080/model-sticker/recommend/popup?sessionId=123&tag=ok&userId={}&language=pt&type=0'.format(
             duid)
         response = self.client.get(url)
         print(response.text)
