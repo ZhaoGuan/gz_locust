@@ -1003,7 +1003,7 @@ class popup_test(TaskSet):
         print(response.text)
 
     # gif search
-    @task(10)
+    @task(0)
     def gif_search(self):
         tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "😘😘", "?", "??", "???"]
         lang = ['en', 'es', 'in', 'pt', 'fr', 'ru', 'el', 'mn']
@@ -1031,6 +1031,99 @@ class popup_test(TaskSet):
             10) + '&pos=' + str(0)
         response = self.client.get(url)
         print(response)
+
+    @task(10)
+    def spring(self):
+        hit = ['c55f64b78df14008adbaeff615e35c4c', '50a4ecbbb8474a1cbd7737a029e155ac',
+               'cc8a440f70aa44779559627be07ff59f',
+               'd91ea26a9b6d4e8885cb2acace4c30a1', '7b3dc5a04dd0469abc8bde1764160899',
+               '8224c2c0c5aa442f99586a57cd35133d',
+               'c782bb7a9f524a568cfd81d6666e417c', '4ff328c8b4d7445facd8d9532116205c',
+               'beca0c0ed31e4552b791dd5f2136e903',
+               '215c3a6f41c84d0a817ad69f2a4bc495', '06d6333e6e6a492883bb30ddff775d81',
+               '70a2997ed6a0483a86df23ba7b99d07c',
+               '82b5a6c28475925607e397a998a3374b', 'dcde17e6275947ce99ac3f47b19a326d',
+               'd8383ac9fd7444b281f049b15ca1e276',
+               '19ce03fa4f464e2f836a5d7a345297ee', 'a24883f83e944299bdc6d38d923076ac',
+               '8c0ee25aa3382c8e9ac7530495eaeec3',
+               '81f7ea63fae38de326937b0b7ea895bf', '68445cd1869e46a0ad4a6e25e9198603',
+               '0dadbf8949554ffd954a981a40c3b724',
+               '2ee7fe857ee540838b87a946c0953158', '652db7139b204b8db1c49f059242db93',
+               '86936561d6e64bc9b3431558dd5691e4',
+               '5f2686bcfe914b6a8eb4dd282c5ed17a', 'cc0e2b3a5a434968ba655da5594d525b',
+               '0c744ea5f75b46f58d4abea791df8188',
+               '30981c13d3534020bd8645644201b08a', 'a55f136291d74b73843887a8812f97f1',
+               '6196ee370d2f474ba779462e8540f216',
+               '84451f451dc44685bb1aeb47fab9c151', '965a39c29ab2477f9c3c512696b022ad',
+               '09c9c7739eee4b2f8da7ab36d8b214da',
+               '8e57a2d1970949bba90c3ab35f14f63d', 'dbbde590248c4651b5f05b3d660c5411',
+               'cea99385e252418a9d534ed26cf4f386',
+               '3cfc950bd565419ab731c9ecca138fa0', 'd66f594226dd427bac13c67a8a5aee71',
+               '38acff2aba14464ab44ac840b9b032b7',
+               'e742947f1f614ebd894e1a58f42ea368', 'f7dbd671bbf7455f9c99f1e37c83c327',
+               'b67063377b004dd0a8dc90e31dc6b768',
+               'c96c34c1eaa548c88513808feda26935', '51e9638cc420400cae83d00071768007',
+               '555ebb7c3bc34a449d2293b712c3b3a5',
+               '89659bfd34d04e0eab140984c213dd85', '49674aea545841b1a015ccc7eff6ae66',
+               'a8a8feaa2c6e4ab2b94c53caa49150da',
+               'b50a0cd9d6b4446bb3073bf7138a2161', 'a53d0916c5434aaab61f27bd2901c74a',
+               '5d11e386e5784d1581b64ce0c77203ef',
+               'ea6a2a9e8d984a5489f35abd5e6ca7cc', '4c470e6fba4a4da8800304cd96083190',
+               '5df7aa33e70b4d1698e1706dc2419f3e',
+               '2addbc0c117d424883bd3898c8b16297', 'eb67768b3a372c851550b14c6ce78073',
+               '6834995ea46e4de285070b2f47459330',
+               'c5d1112963a74f9b8928631eda403a08', 'b77b051eae38bb92c8b3cc632cbcbf28',
+               '00ac89c1c921421cb9923e28bb4f3e32',
+               '005509eb14ba41c0b1c89c48a5c00c18', '48191e1eb43644eda2cc65c004d0830a',
+               'aaa30d180b934173b3345d28741380cf',
+               '4500b082905a49d0a040976230ca273d', 'c6dbff2e32dd483a8f68240b2ac76db5',
+               '344f49f847ff4a0ebfeda6c3b6c8d83c',
+               '758b46475c12433d8633ef9fffcae707', '52aea0ee75d34b259ec1e328f398372b',
+               '4398db0d987144db82959170f2e5f26e',
+               '07d126ec668b97cc995bd4fa3dbadb72', '1534ee327dde40f891bf8d89d93cb051',
+               'b950d94b7e9f4a0a9c244baf4ae5fc3b',
+               '302a0cd0fff643edb6265fdea082c4f0', 'a6bf17cf12a877894f0e530f22625b5e',
+               '6dfc923bbb6082acb1bda9b044a167e5',
+               '40baafb04e914ee38f9825542c55252b', '4d25f0bf01a041c1a3961ebddc705bda',
+               'fa8230afbad54754841c75bd695ce290',
+               '78a4d85d56494668aaa345e58b806aaa', '868a9b8946704b71acb2d355cc80b8a9',
+               '14fc8be32f2f40a1b8bbb4f063bfc283',
+               '2ce4ed354f6a420b87b2aa2f67f3ef66', 'eaba9e9d7b8e31b64f167ec16ac9d775',
+               '2066e2579717416189c6b2c1768c05b4',
+               '0a7c6231eab04dd4818c606e329598cb', '27c9efdf9a724dceba3f5781cb948a1f',
+               'cf4713952ca644beb5350d3447387bc9',
+               '5305d9afc01346cea4249fd1f115c794', 'd145478960e347daadf46f3503d03a2e',
+               '2c8bba2cadda453ea5085b7bc9e99cdd',
+               'f1da5d31955845bda6b4d4b42c3897ad', 'c4c2b1bf2f294cfe9bb0738fe10df7c5',
+               '8e7470a260ee45d4bdb48db75ac92039',
+               '5b5ea4a4774b4dfc996551c8102e8727', '0aa966c337cc4e4fbeb015ab8f908b25',
+               'ff0ecf762e244bd7acf56d47d73eb2af',
+               '0426e39417ed4821bad49f24ba501b6c', '5cad96637f65447eaf0f070dedd655bb',
+               '40b1f7d1d2c1c97c718cddecf1eef104',
+               '681d3ec29802462eb5ca75f0450355c5', 'b6abeca96552dab9360be75fac2df1a4',
+               '93e4673733f143638870cc590ffb747d',
+               'daa07a157f1d41458eef1aefcd7fdeeb', '810949e3200e4fac873b1fd828729711',
+               '2eaafd5f0d7d4d2ab60fef4954f1e625',
+               '708851bd19794ca5bca7df3ac6b3334f', 'b86458cba2124ad3b3b2c92eeedb44ca',
+               'd7a953a8ec4d4b8baf8926da5b75fb83',
+               'ee097b15ed4a446f9d0a6519028c8756', '4656593bb1354fe7801b7011e96e5b0b',
+               'aeb0ca93ce754afba6e025bed66adbe6',
+               'c4acd2c8a7da4180bf397a4610a661fa', '4b3d6a38a81a469aa233e021087fbb1c',
+               '8cb2d3dad2c945c49c03069709dae49a',
+               '22badc5d5fba4808bf58473a9ef6a802', '2542ad4dd79e478ea149ebf97ed9e9f5',
+               '347b60ed24de446d8bdb720289d671b5',
+               '851d3f4ffe1dff39a6f81fdf682812ba', '1e7efe178de643c2a8232372eab0b671',
+               '222343cad36346a3890c4e8d0480b797',
+               '1569959deeb8440d9864c09d49ccb8e0', '2da20c31fd62453eace59b7c7c39361e',
+               '503a9f9bf2694a1ea1d225a377efaa9f',
+               'ae83a428e2f9e99344486c277901f09a', '0bad0fbc28fd4246bb8a7dad24e52e86']
+        duid = random.choice(hit)
+        # url = 'http://172.31.23.134:10010/recommend/popup?userId={}&tag=lol&sessionId=123&language=en&country=us&product=kika'.format(
+        #     duid)
+        url = 'http://172.31.23.134:10010/recommend/popup?sessionId=123&tag=ok&userId={}&language=pt&type=0'.format(
+            duid)
+        response = self.client.get(url)
+        print(response.text)
 
 
 class MyLocust(HttpLocust):
