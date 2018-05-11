@@ -1003,16 +1003,16 @@ class popup_test(TaskSet):
         print(response.text)
 
     # gif search
-    @task(0)
+    @task(10)
     def gif_search(self):
         tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "😘😘", "?", "??", "???"]
         lang = ['en', 'es', 'in', 'pt', 'fr', 'ru', 'el', 'mn']
         # url = 'http://kika-backend-sticker-web0.intranet.com:8080/backend-content-sending/v1/gifsticker/search?lang=' + random.choice(
         #     lang) + '&tag=' + random.choice(
         #     tags) + '&offset=' + str(random.choice(range(1, 50))) + '&limite=' + str(random.choice(range(1, 50)))
-        url = 'http://172.31.21.26:8080/v1/gifsticker/search?lang=' + random.choice(
+        url = 'http://172.31.21.26:8080/v1/gifsticker/search?lang=' + + random.choice(
             lang) + '&tag=' + random.choice(
-            tags) + '&offset=' + str(0) + '&limite=' + str(10)
+            tags) + '&offset=' + str(random.choice(range(0, 50))) + '&limite=' + str(random.choice(range(1, 50)))
         print(url)
         response = self.client.get(url)
         try:
@@ -1032,7 +1032,7 @@ class popup_test(TaskSet):
         response = self.client.get(url)
         print(response)
 
-    @task(10)
+    @task(0)
     def spring(self):
         hit = ['c55f64b78df14008adbaeff615e35c4c', '50a4ecbbb8474a1cbd7737a029e155ac',
                'cc8a440f70aa44779559627be07ff59f',
