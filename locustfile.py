@@ -1005,13 +1005,12 @@ class popup_test(TaskSet):
     # gif search
     @task(10)
     def gif_search(self):
-        tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "😘😘", "?", "??", "???"]
+        tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "?", "??", "???"]
         lang = ['en', 'es', 'in', 'pt', 'fr', 'ru', 'el', 'mn']
         # url = 'http://kika-backend-sticker-web0.intranet.com:8080/backend-content-sending/v1/gifsticker/search?lang=' + random.choice(
         #     lang) + '&tag=' + random.choice(
         #     tags) + '&offset=' + str(random.choice(range(1, 50))) + '&limite=' + str(random.choice(range(1, 50)))
-        url = 'http://172.31.21.26:8080/v1/gifsticker/search?lang=' + random.choice(
-            lang) + '&tag=' + random.choice(
+        url = 'http://172.31.21.26:8080/v1/gifsticker/search?lang=' + random.choice(lang) + '&tag=' + random.choice(
             tags) + '&offset=' + str(random.choice(range(0, 50))) + '&limite=' + str(random.choice(range(1, 50)))
         print(url)
         response = self.client.get(url)
