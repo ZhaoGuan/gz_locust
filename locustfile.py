@@ -1003,7 +1003,7 @@ class popup_test(TaskSet):
         print(response.text)
 
     # gif search
-    @task(10)
+    @task(0)
     def gif_search(self):
         tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "?", "??", "???"]
         lang = ['en', 'es', 'in', 'pt', 'fr', 'ru', 'el', 'mn']
@@ -1123,6 +1123,12 @@ class popup_test(TaskSet):
         #     duid)
         url = 'http://172.31.23.134:8080/model-sticker/recommend/popup?sessionId=123&tag=ok&userId={}&language=pt&type=0'.format(
             duid)
+        response = self.client.get(url)
+        print(response.text)
+
+    @task(10)
+    def gif(self):
+        url = 'http://api.giphy.com/v1/gifs/random?api_key=3otOKnzEUBswRmEYr6&tag=ok&fmt=json&rating=g'
         response = self.client.get(url)
         print(response.text)
 
