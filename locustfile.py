@@ -1128,7 +1128,8 @@ class popup_test(TaskSet):
 
     @task(10)
     def gif(self):
-        url = 'http://api.giphy.com/v1/gifs/random?api_key=3otOKnzEUBswRmEYr6&tag=ok&fmt=json&rating=g'
+        # url = 'http://api.giphy.com/v1/gifs/random?api_key=3otOKnzEUBswRmEYr6&tag=ok&fmt=json&rating=g'
+        url = 'https://api.tenor.com/v1/random?q=ok&api_key=WL0AFGT9P4D1&limit=1&pos=0'
         response = self.client.get(url)
         print(response.text)
 
