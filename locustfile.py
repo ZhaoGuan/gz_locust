@@ -20,16 +20,20 @@ class popup_test(TaskSet):
     @task(0)
     def popup(self):
         # self.client.header()
+        lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
+        kb_lang = random.choice(lang)
+        lang = kb_lang.split('_')[0]
+        country = kb_lang.split('_')[1]
         header_online = {
-            'User-Agent': 'com.qisiemoji.inputmethod/2021 (175b40b82dac4a5e95e3976cebccd7ac/78472ddd7528bcacc15725a16aeec190) Country/AU Language/en System/android Version/23 Screen/480',
+            'User-Agent': 'com.qisiemoji.inputmethod/2021 (175b40b82dac4a5e95e3976cebccd7ac/78472ddd7528bcacc15725a16aeec190) Country/' + country + ' Language/' + lang + ' System/android Version/23 Screen/480',
             'Accept-Charset': 'UTF-8', 'Kika-Install-Time': '1503996692777', 'Accept-Encoding': 'gzip',
-            'X-Model': 'D6603', 'If-Modified-Since': 'Mon, 04 Sep 2017 07:08:32 GMT', 'Accept-Language': 'en_AU',
+            'X-Model': 'D6603', 'If-Modified-Since': 'Mon, 04 Sep 2017 07:08:32 GMT', 'Accept-Language': kb_lang,
             'Host': 'api.kikakeyboard.com', 'Connection': 'Keep-Alive'}
-        header_test = {
-            'User-Agent': 'com.qisiemoji.inputmethod/2021 (175b40b82dac4a5e95e3976cebccd7ac/78472ddd7528bcacc15725a16aeec190) Country/AU Language/en System/android Version/23 Screen/480',
-            'Accept-Charset': 'UTF-8', 'Kika-Install-Time': '1503996692777', 'Accept-Encoding': 'gzip',
-            'X-Model': 'D6603', 'If-Modified-Since': 'Mon, 04 Sep 2017 07:08:32 GMT', 'Accept-Language': 'en_AU',
-            'Host': 'dev-api.kikakeyboard.com', 'Connection': 'Keep-Alive'}
+        # header_test = {
+        #     'User-Agent': 'com.qisiemoji.inputmethod/2021 (175b40b82dac4a5e95e3976cebccd7ac/78472ddd7528bcacc15725a16aeec190) Country/AU Language/en System/android Version/23 Screen/480',
+        #     'Accept-Charset': 'UTF-8', 'Kika-Install-Time': '1503996692777', 'Accept-Encoding': 'gzip',
+        #     'X-Model': 'D6603', 'If-Modified-Since': 'Mon, 04 Sep 2017 07:08:32 GMT', 'Accept-Language': 'en_AU',
+        #     'Host': 'dev-api.kikakeyboard.com', 'Connection': 'Keep-Alive'}
         pop = self.client.get(
             'https://api.kikakeyboard.com/v1/stickers2/popup?tag=lol&kb_lang=en_AU&sign=87d6cf9df3294d23b6ac7d85b28d4491',
             headers=header_online, catch_response=True)
@@ -1126,7 +1130,7 @@ class popup_test(TaskSet):
         response = self.client.get(url)
         print(response.text)
 
-    @task(10)
+    @task(0)
     def gif(self):
         # url = 'http://api.giphy.com/v1/gifs/random?api_key=3otOKnzEUBswRmEYr6&tag=ok&fmt=json&rating=g'
         url = 'https://api.tenor.com/v1/random?q=ok&api_key=WL0AFGT9P4D1&limit=1&pos=0'
