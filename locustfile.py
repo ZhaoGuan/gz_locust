@@ -21,6 +21,8 @@ class popup_test(TaskSet):
     def popup(self):
         # self.client.header()
         lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
+        tag_list = ['ok', 'lol', 'good', 'yes']
+        tag = random.choice(tag_list)
         kb_lang = random.choice(lang)
         lang = kb_lang.split('_')[0]
         country = kb_lang.split('_')[1]
@@ -38,7 +40,7 @@ class popup_test(TaskSet):
         #     'https://api.kikakeyboard.com/v1/stickers2/popup?tag=lol&kb_lang=en_AU&sign=87d6cf9df3294d23b6ac7d85b28d4491',
         #     headers=header_online, catch_response=True)
         pop = self.client.get(
-            'http://172.31.23.134:9090/backend-content-sending/popup?tag=ok&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
+            'http://172.31.23.134:9090/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
             headers=header_test, catch_response=True)
         with pop as response:
             try:
