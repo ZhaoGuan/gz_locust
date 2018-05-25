@@ -6,6 +6,7 @@ from locust import HttpLocust, TaskSet, task
 from case_generate import Http_Test, config_reader
 import random
 import json
+import hashlib
 
 # 放在引用前保证数据数量
 test_data = config_reader('./test_case')
@@ -15,9 +16,22 @@ all_data = a.url_keys_data()
 
 # single_data = all_data[random.choice(range(len(all_data)))
 
+def random_duid():
+    all_world = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                 'u', 'v', 'w', 'x', 'y', 'z']
+    world = random.sample(all_world, 5)
+    result_world = ''
+    for i in world:
+        result_world += i
+    m = hashlib.md5()
+    m.update(result_world.encode('utf-8'))
+    MD5 = m.hexdigest()
+    # print(MD5)
+    return MD5
+
 
 class popup_test(TaskSet):
-    @task(10)
+    @task(0)
     def popup(self):
         # self.client.header()
         lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
@@ -1138,6 +1152,21 @@ class popup_test(TaskSet):
         url = 'https://api.tenor.com/v1/random?q=ok&api_key=WL0AFGT9P4D1&limit=1&pos=0'
         response = self.client.get(url)
         print(response.text)
+
+    @task(10)
+    def data_modle(self):
+        duid_list = ['209b0de72562441a0b820892c692cf62', 'da611e8ec26ffcb2cd07ce14383d246f']
+        tag_list = ['ok', 'lol', 'yes', 'good', 'no']
+        url = 'http://172.31.31.224:8080/recommend/maturity/popup?sessionId=123123123123&tag=' + random.choice(
+            tag_list) + '&userId=' + random.choice(duid_list) + '&product=api_test'
+        response = self.client.get(url)
+        print(response.text)
+        with pop as response:
+            try:
+                if response.json()['errorCode'] != '0':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
 
 
 class MyLocust(HttpLocust):
