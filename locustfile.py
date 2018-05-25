@@ -7,14 +7,16 @@ from case_generate import Http_Test, config_reader
 import random
 import json
 import hashlib
+from base_function.kika_base_request import Kika_base_request
 
 # 放在引用前保证数据数量
 test_data = config_reader('./test_case')
 a = Http_Test(test_data)
 all_data = a.url_keys_data()
 
-
 # single_data = all_data[random.choice(range(len(all_data)))
+kika = Kika_base_request('api.kikakeyboard.com')
+
 
 def random_duid():
     all_world = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
@@ -28,6 +30,31 @@ def random_duid():
     MD5 = m.hexdigest()
     # print(MD5)
     return MD5
+
+
+def get_sign(self, app, version, duid):
+    if app == None or version == None or duid == None:
+        sign = False
+    else:
+        if 'pro' == app:
+            app_key = '4e5ab3a6d2140457e0423a28a094b1fd'
+            security_key = '58d71c3fd1b5b17db9e0be0acc1b8048'
+            # package_name =
+
+        elif 'ikey' == app:
+            app_key = 'e2934742f9d3b8ef2b59806a041ab389'
+            security_key = '2c7cd6555d6486c2844afa0870aac5d6'
+            # package_name =
+        else:
+            app_key = '78472ddd7528bcacc15725a16aeec190'
+            security_key = '6f43e445f47073c4272603990e9adf54'
+            # package_name =
+        base = 'app_key' + app_key + 'app_version' + str(version) + 'duid' + str(duid)
+        m = hashlib.md5()
+        m.update(base.encode('utf-8'))
+        sign = m.hexdigest()
+    # print(sign)
+    return sign
 
 
 class popup_test(TaskSet):
@@ -1153,7 +1180,7 @@ class popup_test(TaskSet):
         response = self.client.get(url)
         print(response.text)
 
-    @task(10)
+    @task(0)
     def data_modle(self):
         duid_list = ['209b0de72562441a0b820892c692cf62', 'da611e8ec26ffcb2cd07ce14383d246f']
         tag_list = ['ok', 'lol', 'yes', 'good', 'no']
@@ -1169,6 +1196,23 @@ class popup_test(TaskSet):
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             except:
                 pass
+
+    @task(10)
+    def api_test_popup(self):
+        tag_list = ['ok', 'lol', 'yes', 'good', 'no']
+        duid = kika.get_duid_in_way(8, 0)
+        tag = random.choice(tag_list)
+        kb_lang = 'en_US'
+        pop = self.client.get(
+            'http://sticker.pre.kikakeyboard.com/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
+            headers=kika.set_header(duid=duid, lang=kb_lang, app='pro'), catch_response=True)
+        with pop as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
+                # print(pop.json())
 
 
 class MyLocust(HttpLocust):
