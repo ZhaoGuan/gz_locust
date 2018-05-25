@@ -1159,7 +1159,7 @@ class popup_test(TaskSet):
         tag_list = ['ok', 'lol', 'yes', 'good', 'no']
         # url = 'http://172.31.31.224:8080/recommend/maturity/popup?sessionId=123123123123&tag=' + random.choice(
         #     tag_list) + '&userId=' + random.choice(duid_list) + '&product=api_test'
-        url = 'http://172.31.23.134:8080/recommend/maturity/popup?sessionId=123123123123&tag=' + random.choice(
+        url = 'http://172.31.23.134:8080/model-sticker/recommend/maturity/popup?sessionId=123123123123&tag=' + random.choice(
             tag_list) + '&userId=' + random.choice(duid_list) + '&product=api_test'
         pop = self.client.get(url)
         print(pop.text)
