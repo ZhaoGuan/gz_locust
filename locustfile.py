@@ -1201,10 +1201,11 @@ class popup_test(TaskSet):
     def api_test_popup(self):
         tag_list = ['ok', 'lol', 'yes', 'good', 'no']
         duid = kika.get_duid_in_way(8, 0)
+        sign = kika.get_sign(app='pro', duid=duid)
         tag = random.choice(tag_list)
         kb_lang = 'en_US'
         pop = self.client.get(
-            'http://172.31.24.127:8080/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
+            'http://172.31.24.127:8080/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=' + sign,
             headers=kika.set_header(duid=duid, lang=kb_lang, app='pro'), catch_response=True)
         print(pop.text)
         with pop as response:
