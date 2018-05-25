@@ -1157,10 +1157,12 @@ class popup_test(TaskSet):
     def data_modle(self):
         duid_list = ['209b0de72562441a0b820892c692cf62', 'da611e8ec26ffcb2cd07ce14383d246f']
         tag_list = ['ok', 'lol', 'yes', 'good', 'no']
-        url = 'http://172.31.31.224:8080/recommend/maturity/popup?sessionId=123123123123&tag=' + random.choice(
+        # url = 'http://172.31.31.224:8080/recommend/maturity/popup?sessionId=123123123123&tag=' + random.choice(
+        #     tag_list) + '&userId=' + random.choice(duid_list) + '&product=api_test'
+        url = 'http://172.31.23.134:8080/recommend/maturity/popup?sessionId=123123123123&tag=' + random.choice(
             tag_list) + '&userId=' + random.choice(duid_list) + '&product=api_test'
-        response = self.client.get(url)
-        print(response.text)
+        pop = self.client.get(url)
+        print(pop.text)
         with pop as response:
             try:
                 if response.json()['errorCode'] != '0':
