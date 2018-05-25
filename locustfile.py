@@ -1210,7 +1210,7 @@ class popup_test(TaskSet):
         print(pop.text)
         with pop as response:
             try:
-                if response.json()['errorMsg'] != 'ok':
+                if 'from' not in response.json()['data']['sticker'][0]['key']:
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             except:
                 pass
