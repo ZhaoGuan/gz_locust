@@ -12,7 +12,7 @@ class Kika_base_request:
         self.host = host
 
     # 根据udid获取sign
-    def get_sign(self, app, version, duid):
+    def get_sign(self, app, duid, version=1477):
         if app == None or version == None or duid == None:
             sign = False
         else:
