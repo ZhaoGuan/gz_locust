@@ -1204,7 +1204,7 @@ class popup_test(TaskSet):
         tag = random.choice(tag_list)
         kb_lang = 'en_US'
         pop = self.client.get(
-            'http://sticker.pre.kikakeyboard.com/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
+            'http://172.31.24.127:8080/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
             headers=kika.set_header(duid=duid, lang=kb_lang, app='pro'), catch_response=True)
         with pop as response:
             try:
@@ -1212,7 +1212,7 @@ class popup_test(TaskSet):
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             except:
                 pass
-                # print(pop.json())
+                print(pop.json())
 
 
 class MyLocust(HttpLocust):
