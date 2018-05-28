@@ -1204,8 +1204,11 @@ class popup_test(TaskSet):
         sign = kika.get_sign(app='pro', duid=duid)
         tag = random.choice(tag_list)
         kb_lang = 'en_US'
+        # pop = self.client.get(
+        #     'http://172.31.24.127:8080/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=' + sign,
+        #     headers=kika.set_header(duid=duid, lang=kb_lang, app='pro'), catch_response=True)
         pop = self.client.get(
-            'http://172.31.24.127:8080/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=' + sign,
+            'http://172.31.23.134:9090/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=' + sign,
             headers=kika.set_header(duid=duid, lang=kb_lang, app='pro'), catch_response=True)
         print(pop.text)
         with pop as response:
