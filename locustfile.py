@@ -1197,7 +1197,7 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(10)
+    @task(0)
     def api_test_popup(self):
         tag_list = ['ok', 'lol', 'yes', 'good', 'no']
         duid = kika.get_duid_in_way(8, 0)
@@ -1219,6 +1219,38 @@ class popup_test(TaskSet):
                 pass
                 print(pop.json())
 
+    @task(10)
+    def ip_pic(self):
+        url = 'https://activity.api.kikatech.com/ip-groups/v1/activity/pic?activity=worldcup&tag=gz&style=page'
+        pic = self.client.get(url, catch_response=True)
+        with pic as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
+
+    @task(0)
+    def ip_tag(self):
+        url = 'https://activity.api.kikatech.com/ip-groups/v1/activity/tag?activity=worldcup&style=all'
+        pic = self.client.get(url, catch_response=True)
+        with pic as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
+
+    @task(0)
+    def ip_new(self):
+        url = 'https://activity.api.kikatech.com/ip-groups/v1/match/worldcupnews'
+        pic = self.client.get(url, catch_response=True)
+        with pic as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
 
 class MyLocust(HttpLocust):
     task_set = popup_test
@@ -1226,8 +1258,9 @@ class MyLocust(HttpLocust):
     min_wait = 100
     # 任务的最大等待时间单位ms
     max_wait = 1000
-    host = 'api.kikakeyboard.com'
+    # host = 'api.kikakeyboard.com'
     # host = 'blau.kika-backend.com'
     # host = 'kika-data-blau-web0.intranet.com'
     # host = 'api.giphy.com'
     # host = 'https://www.baidu.com/'
+    host = 'activity.api.kikatech.com'
