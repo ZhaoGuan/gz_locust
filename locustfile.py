@@ -1230,7 +1230,7 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(0)
+    @task(10)
     def ip_tag(self):
         url = 'https://activity.api.kikatech.com/ip-groups/v1/activity/tag?activity=worldcup&style=all'
         pic = self.client.get(url, catch_response=True)
@@ -1241,7 +1241,7 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(0)
+    @task(10)
     def ip_new(self):
         url = 'https://activity.api.kikatech.com/ip-groups/v1/match/worldcupnews'
         pic = self.client.get(url, catch_response=True)
