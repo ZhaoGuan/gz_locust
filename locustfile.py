@@ -61,7 +61,8 @@ class popup_test(TaskSet):
     @task(10)
     def popup(self):
         # self.client.header()
-        lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
+        # lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
+        lang = ['en_AU']
         tag_list = ['ok']
         tag = random.choice(tag_list)
         kb_lang = random.choice(lang)
