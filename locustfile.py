@@ -58,7 +58,7 @@ def get_sign(self, app, version, duid):
 
 
 class popup_test(TaskSet):
-    @task(10)
+    @task(0)
     def popup(self):
         # self.client.header()
         lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
@@ -1252,6 +1252,23 @@ class popup_test(TaskSet):
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             except:
                 pass
+
+    @task(10)
+    def ad(self):
+        header = {'Kika-Install-Time': '1505198889124', 'Host': None, 'Accept-Encoding': 'gzip',
+                  'Accept-Charset': 'UTF-8',
+                  'Connection': 'Keep-Alive',
+                  'User-Agent': 'com.qisiemoji.inputmethod/1477 (5a215835df204115ee3d2d4ec0c528aa/78472ddd7528bcacc15725a16aeec190) Country/US Language/en System/android Version/20 Screen/480',
+                  'Accept-Language': 'en_US', 'X-Model': 'D6603'}
+        url = 'https://api.kikakeyboard.com/v1/advertising/online'
+        response = self.client.get(url, catch_response=True)
+        with response as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
+
 
 class MyLocust(HttpLocust):
     task_set = popup_test
