@@ -1260,8 +1260,8 @@ class popup_test(TaskSet):
                   'Connection': 'Keep-Alive',
                   'User-Agent': 'com.qisiemoji.inputmethod/1477 (5a215835df204115ee3d2d4ec0c528aa/78472ddd7528bcacc15725a16aeec190) Country/US Language/en System/android Version/20 Screen/480',
                   'Accept-Language': 'en_US', 'X-Model': 'D6603'}
-        url = 'https://api.kikakeyboard.com/v1/advertising/online'
-        response = self.client.get(url, catch_response=True)
+        url = 'http://172.31.7.36:8080/v1/advertising/online'
+        response = self.client.get(url, headers=header, catch_response=True)
         with response as response:
             try:
                 if response.json()['errorMsg'] != 'ok':
