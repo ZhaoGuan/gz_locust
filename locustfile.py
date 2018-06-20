@@ -1281,7 +1281,7 @@ class popup_test(TaskSet):
                 pass
 
     @task(0)
-    def gifkeyboard_tag(self):
+    def gifkeyboard_hot(self):
         url = 'http://gifkeyboard.kikakeyboard.com/v1/picture/hot'
         response = self.client.get(url, catch_response=True)
         with response as response:
@@ -1290,6 +1290,7 @@ class popup_test(TaskSet):
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             except:
                 pass
+
 
 class MyLocust(HttpLocust):
     task_set = popup_test
