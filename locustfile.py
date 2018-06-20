@@ -1174,7 +1174,7 @@ class popup_test(TaskSet):
         response = self.client.get(url)
         print(response.text)
 
-    @task(0)
+    @task(10)
     def gif(self):
         # url = 'http://api.giphy.com/v1/gifs/random?api_key=3otOKnzEUBswRmEYr6&tag=ok&fmt=json&rating=g'
         url = 'https://api.tenor.com/v1/random?q=ok&api_key=WL0AFGT9P4D1&limit=1&pos=0'
@@ -1253,7 +1253,7 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(10)
+    @task(0)
     def ad(self):
         header = {'Kika-Install-Time': '1505198889124', 'Host': None, 'Accept-Encoding': 'gzip',
                   'Accept-Charset': 'UTF-8',
@@ -1276,9 +1276,10 @@ class MyLocust(HttpLocust):
     min_wait = 100
     # 任务的最大等待时间单位ms
     max_wait = 1000
-    host = 'api.kikakeyboard.com'
+    # host = 'api.kikakeyboard.com'
     # host = 'blau.kika-backend.com'
     # host = 'kika-data-blau-web0.intranet.com'
     # host = 'api.giphy.com'
     # host = 'https://www.baidu.com/'
     # host = 'activity.api.kikatech.com'
+    host = 'api.tenor.com'
