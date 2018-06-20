@@ -1269,6 +1269,27 @@ class popup_test(TaskSet):
             except:
                 pass
 
+    @task(10)
+    def gifkeyboard_tag(self):
+        url = 'http://gifkeyboard.kikakeyboard.com/v1/tag/hot'
+        response = self.client.get(url, catch_response=True)
+        with response as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
+
+    @task(0)
+    def gifkeyboard_tag(self):
+        url = 'http://gifkeyboard.kikakeyboard.com/v1/picture/hot'
+        response = self.client.get(url, catch_response=True)
+        with response as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
 
 class MyLocust(HttpLocust):
     task_set = popup_test
@@ -1282,4 +1303,5 @@ class MyLocust(HttpLocust):
     # host = 'api.giphy.com'
     # host = 'https://www.baidu.com/'
     # host = 'activity.api.kikatech.com'
-    host = 'api.tenor.com'
+    # host = 'api.tenor.com'
+    host = 'gifkeyboard.kikakeyboard.com'
