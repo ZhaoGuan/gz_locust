@@ -1068,7 +1068,7 @@ class popup_test(TaskSet):
         except:
             pass
 
-    @task(10)
+    @task(0)
     def search(self):
         tags = ['ok', 'lol', "bueno", "bueno amor", "buenos días", "😘😘", "?", "??", "???"]
         # giphy
