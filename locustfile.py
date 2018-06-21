@@ -1269,7 +1269,7 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(10)
+    @task(0)
     def gifkeyboard_tag(self):
         url = 'http://gifkeyboard.kikakeyboard.com/v1/tag/hot'
         response = self.client.get(url, catch_response=True)
@@ -1291,6 +1291,21 @@ class popup_test(TaskSet):
             except:
                 pass
 
+    @task(10)
+    def advertising(self):
+        url = 'https://api.kikakeyboard.com/v1/advertising/online'
+        header = {'Accept-Charset': 'UTF-8', 'Accept-Encoding': 'gzip',
+                  'User-Agent': 'com.qisiemoji.inputmethod/1477 (5a215835df204115ee3d2d4ec0c528aa/78472ddd7528bcacc15725a16aeec190) Country/US Language/en System/android Version/19 Screen/480',
+                  'Accept-Language': 'en_US', 'Connection': 'Keep-Alive', 'Host': None,
+                  'Kika-Install-Time': '1505198889124', 'X-Model': 'D6603'}
+        response = self.client.get(url, headers=header, catch_response=True)
+        with response as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
+
 
 class MyLocust(HttpLocust):
     task_set = popup_test
@@ -1298,11 +1313,11 @@ class MyLocust(HttpLocust):
     min_wait = 100
     # 任务的最大等待时间单位ms
     max_wait = 1000
-    # host = 'api.kikakeyboard.com'
+    host = 'api.kikakeyboard.com'
     # host = 'blau.kika-backend.com'
     # host = 'kika-data-blau-web0.intranet.com'
     # host = 'api.giphy.com'
     # host = 'https://www.baidu.com/'
     # host = 'activity.api.kikatech.com'
     # host = 'api.tenor.com'
-    host = 'gifkeyboard.kikakeyboard.com'
+    # host = 'gifkeyboard.kikakeyboard.com'
