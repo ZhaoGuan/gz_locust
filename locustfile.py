@@ -1327,7 +1327,7 @@ class MyLocust(HttpLocust):
     min_wait = 100
     # 任务的最大等待时间单位ms
     max_wait = 1000
-    host = 'api.kikakeyboard.com'
+    # host = 'api.kikakeyboard.com'
     # host = 'blau.kika-backend.com'
     # host = 'kika-data-blau-web0.intranet.com'
     # host = 'api.giphy.com'
