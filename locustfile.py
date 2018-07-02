@@ -1291,13 +1291,27 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(10)
+    @task(0)
     def advertising(self):
         url = 'https://api.kikakeyboard.com/v1/advertising/online'
         header = {'Accept-Charset': 'UTF-8', 'Accept-Encoding': 'gzip',
                   'User-Agent': 'com.qisiemoji.inputmethod/1477 (5a215835df204115ee3d2d4ec0c528aa/78472ddd7528bcacc15725a16aeec190) Country/US Language/en System/android Version/19 Screen/480',
                   'Accept-Language': 'en_US', 'Connection': 'Keep-Alive', 'Host': None,
                   'Kika-Install-Time': '1505198889124', 'X-Model': 'D6603'}
+        response = self.client.get(url, headers=header, catch_response=True)
+        with response as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
+
+    @task(10)
+    def OpTag(self):
+        url = 'http://34.214.222.244:9090/backend-content-sending/popup?tag=good&kb_lang=en_US&sign=a15d5bcd3a310c773f47955a636022cc&type=0'
+        header = {'X-Model': 'D6603', 'Connection': 'Keep-Alive',
+                  'User-Agent': 'com.qisiemoji.inputmethod/2541 (c4b18139641abdd81512120cba3ba4fd/78472ddd7528bcacc15725a16aeec190) Country/US Language/en System/android Version/23 Screen/480',
+                  'Accept-Language': 'en_US', 'Accept-Encoding': 'gzip', 'Kika-Install-Time': '1505198889124'}
         response = self.client.get(url, headers=header, catch_response=True)
         with response as response:
             try:
