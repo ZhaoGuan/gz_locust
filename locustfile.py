@@ -85,7 +85,7 @@ class popup_test(TaskSet):
         #     'http://172.31.23.134:9090/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
         #     headers=header_test, catch_response=True)
         pop = self.client.get(
-            'http://172.31.24.127:8080/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + 'sign=579fa00e0907f2cf9e57c083ed3bcb2a',
+            'http://172.31.24.127:8080/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + 'sign=87d6cf9df3294d23b6ac7d85b28d4491',
             headers=header_test, catch_response=True)
         with pop as response:
             print(pop.json())
