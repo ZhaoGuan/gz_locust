@@ -63,7 +63,8 @@ class popup_test(TaskSet):
         # self.client.header()
         lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
         # lang = ['en_AU']
-        tag_list = ['mais ou menos', 'yo también amor', 'gn streaks']
+        tag_list = ['ok', 'pt_ok', 'es_ok']
+        # tag_list = ['mais ou menos', 'yo también amor', 'gn streaks']
         tag = random.choice(tag_list)
         kb_lang = random.choice(lang)
         lang = kb_lang.split('_')[0]
@@ -84,12 +85,12 @@ class popup_test(TaskSet):
         # pop = self.client.get(
         #     'https://api.kikakeyboard.com/v1/stickers2/popup?tag=lol&kb_lang=en_AU&sign=87d6cf9df3294d23b6ac7d85b28d4491',
         #     headers=header_online, catch_response=True)
-        # pop = self.client.get(
-        #     'http://172.31.23.134:9090/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
-        #     headers=header_test, catch_response=True)
         pop = self.client.get(
-            'http://sticker.pre.kikakeyboard.com//backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=29f46eb43adec7c1a03217d0da9454d5',
-            headers=header_online, catch_response=True)
+            'http://172.31.23.134:9090/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
+            headers=header_test, catch_response=True)
+        # pop = self.client.get(
+        #     'http://sticker.pre.kikakeyboard.com//backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=29f46eb43adec7c1a03217d0da9454d5',
+        #     headers=header_online, catch_response=True)
         with pop as response:
             print(pop.json())
             print(header_online)
