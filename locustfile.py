@@ -88,6 +88,7 @@ class popup_test(TaskSet):
             'http://172.31.24.127:8080/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + 'sign=87d6cf9df3294d23b6ac7d85b28d4491',
             headers=header_test, catch_response=True)
         with pop as response:
+            print(pop.json())
             try:
                 if response.json()['errorMsg'] != 'ok':
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
