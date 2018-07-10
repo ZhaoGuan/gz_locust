@@ -87,7 +87,7 @@ class popup_test(TaskSet):
         #     headers=header_online, catch_response=True)
         pop = self.client.get(
             'http://172.31.23.134:9090/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
-            headers=header_test, catch_response=True)
+            headers=header_online, catch_response=True)
         # pop = self.client.get(
         #     'http://sticker.pre.kikakeyboard.com//backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=29f46eb43adec7c1a03217d0da9454d5',
         #     headers=header_online, catch_response=True)
