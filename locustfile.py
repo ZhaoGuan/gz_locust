@@ -68,19 +68,19 @@ class popup_test(TaskSet):
         kb_lang = random.choice(lang)
         lang = kb_lang.split('_')[0]
         country = kb_lang.split('_')[1]
-        header_online = {
-            'User-Agent': 'com.emoji.ikeyboard/2541 (175b40b82dac4a5e95e3976cebccd7ac/7e2934742f9d3b8ef2b59806a041ab389)) Country/' + country + ' Language/' + lang + ' System/android Version/23 Screen/480',
-            'Accept-Charset': 'UTF-8', 'Kika-Install-Time': '1503996692777', 'Accept-Encoding': 'gzip',
-            'X-Model': 'D6603', 'If-Modified-Since': 'Mon, 04 Sep 2017 07:08:32 GMT', 'Accept-Language': kb_lang,
-            'Host': 'api.kikakeyboard.com', 'Connection': 'Keep-Alive'}
+        # header_online = {
+            # 'User-Agent': 'com.emoji.ikeyboard/2541 (175b40b82dac4a5e95e3976cebccd7ac/7e2934742f9d3b8ef2b59806a041ab389)) Country/' + country + ' Language/' + lang + ' System/android Version/23 Screen/480',
+            # 'Accept-Charset': 'UTF-8', 'Kika-Install-Time': '1503996692777', 'Accept-Encoding': 'gzip',
+            # 'X-Model': 'D6603', 'If-Modified-Since': 'Mon, 04 Sep 2017 07:08:32 GMT', 'Accept-Language': kb_lang,
+            # 'Host': 'api.kikakeyboard.com', 'Connection': 'Keep-Alive'}
         # header_test = {
         #     'User-Agent': 'com.qisiemoji.inputmethod/2021 (175b40b82dac4a5e95e3976cebccd7ac/78472ddd7528bcacc15725a16aeec190) Country/' + country + ' Language/' + lang + ' System/android Version/23 Screen/480',
         #     'Accept-Charset': 'UTF-8', 'Kika-Install-Time': '1503996692777', 'Accept-Encoding': 'gzip',
         #     'X-Model': 'D6603', 'If-Modified-Since': 'Mon, 04 Sep 2017 07:08:32 GMT', 'Accept-Language': kb_lang,
         #     'Host': 'dev-api.kikakeyboard.com', 'Connection': 'Keep-Alive'}
-        # header_online = {'Kika-Install-Time': '1505198889124', 'Accept-Language': 'pt_BR', 'Accept-Encoding': 'gzip',
-        #                  'User-Agent': 'com.emoji.ikeyboard/2541 (175b40b82dac4a5e95e3976cebccd7ac/e2934742f9d3b8ef2b59806a041ab389) Country/BR Language/pt System/android Version/23 Screen/480',
-        #                  'X-Model': 'D6603', 'Connection': 'Keep-Alive'}
+        header_online = {'Kika-Install-Time': '1505198889124', 'Accept-Language': kb_lang, 'Accept-Encoding': 'gzip',
+                         'User-Agent': 'com.emoji.ikeyboard/2541 (175b40b82dac4a5e95e3976cebccd7ac/e2934742f9d3b8ef2b59806a041ab389) Country/'+ country + 'Language/' + lang + 'System/android Version/23 Screen/480',
+                         'X-Model': 'D6603', 'Connection': 'Keep-Alive'}
         # pop = self.client.get(
         #     'https://api.kikakeyboard.com/v1/stickers2/popup?tag=lol&kb_lang=en_AU&sign=87d6cf9df3294d23b6ac7d85b28d4491',
         #     headers=header_online, catch_response=True)
