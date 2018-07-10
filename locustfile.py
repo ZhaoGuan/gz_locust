@@ -91,7 +91,7 @@ class popup_test(TaskSet):
             try:
                 if response.json()['errorMsg'] != 'ok':
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-                if response.json()['data'] != None:
+                if response.json()['data'] == None:
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
             except:
                 pass
