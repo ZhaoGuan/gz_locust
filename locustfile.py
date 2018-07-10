@@ -58,12 +58,12 @@ def get_sign(self, app, version, duid):
 
 
 class popup_test(TaskSet):
-    @task(0)
+    @task(10)
     def popup(self):
         # self.client.header()
-        lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
+        lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID', 'fr']
         # lang = ['en_AU']
-        tag_list = ['ok']
+        tag_list = ['ok', 'es_ok', 'pt_ok']
         tag = random.choice(tag_list)
         kb_lang = random.choice(lang)
         lang = kb_lang.split('_')[0]
@@ -1306,7 +1306,7 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(10)
+    @task(0)
     def OpTag(self):
         url = 'http://172.31.23.134:9090/backend-content-sending/popup?tag=good&kb_lang=en_US&sign=a15d5bcd3a310c773f47955a636022cc&type=0'
         header = {'X-Model': 'D6603', 'Connection': 'Keep-Alive',
