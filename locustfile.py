@@ -63,7 +63,7 @@ class popup_test(TaskSet):
         # self.client.header()
         lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID', 'fr']
         # lang = ['en_AU']
-        tag_list = ['ok', 'es_ok', 'pt_ok']
+        tag_list = ['mais ou menos', 'yo también amor', 'gn streaks']
         tag = random.choice(tag_list)
         kb_lang = random.choice(lang)
         lang = kb_lang.split('_')[0]
@@ -87,6 +87,7 @@ class popup_test(TaskSet):
         pop = self.client.get(
             'http://172.31.24.127:8080/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + 'sign=87d6cf9df3294d23b6ac7d85b28d4491',
             headers=header_test, catch_response=True)
+        print(response.json())
         with pop as response:
             try:
                 if response.json()['errorMsg'] != 'ok':
