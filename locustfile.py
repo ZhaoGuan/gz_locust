@@ -92,6 +92,7 @@ class popup_test(TaskSet):
             headers=header_online, catch_response=True)
         with pop as response:
             print(pop.json())
+            print(header_online)
             try:
                 if response.json()['errorMsg'] != 'ok':
                     response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
