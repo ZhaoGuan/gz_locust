@@ -81,8 +81,11 @@ class popup_test(TaskSet):
         # pop = self.client.get(
         #     'https://api.kikakeyboard.com/v1/stickers2/popup?tag=lol&kb_lang=en_AU&sign=87d6cf9df3294d23b6ac7d85b28d4491',
         #     headers=header_online, catch_response=True)
+        # pop = self.client.get(
+        #     'http://172.31.23.134:9090/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
+        #     headers=header_test, catch_response=True)
         pop = self.client.get(
-            'http://172.31.23.134:9090/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=87d6cf9df3294d23b6ac7d85b28d4491',
+            'http://sticker.pre.kikakeyboard.com/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + 'sign=87d6cf9df3294d23b6ac7d85b28d4491',
             headers=header_test, catch_response=True)
         with pop as response:
             try:
