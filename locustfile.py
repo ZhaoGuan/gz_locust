@@ -1331,6 +1331,16 @@ class popup_test(TaskSet):
             except:
                 pass
 
+    @task(10)
+    def magictext_list(self):
+        url = 'https://api.kikakeyboard.com/v1/recommendconfig/magictext/list'
+        response = self.client.get(url, catch_response=True)
+        with response as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
 
 class MyLocust(HttpLocust):
     task_set = popup_test
