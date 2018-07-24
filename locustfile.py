@@ -16071,7 +16071,8 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%83%8C%E6%9
 http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%8C%89%E9%92%AE%E9%9F%B3%E6%95%88.mp3
 http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmController/action.mp3
 '''
-        url_list = ['http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json',
+        url_list = ['https://gamecenter.kikakeyboard.com/bear/bear/',
+            'http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json',
                     'http://gamecenter.kikakeyboard.com/bear/bear/res/import/04/047566fe0.json',
                     'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E9%99%A8%E7%9F%B3.mp3',
                     'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/stone.plist',
