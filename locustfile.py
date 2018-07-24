@@ -16043,8 +16043,8 @@ class popup_test(TaskSet):
             "ну да",
             "давай"
         ]
-        url = 'https://api.tenor.com/v1/search?q=%s&api_key=WL0AFGT9P4D1&limit=20&pos=0' % random.choice(tag_list)
-        # url = 'https://api.tenor.com/v1/random?q=%s&api_key=WL0AFGT9P4D1&limit=1&pos=0' % random.choice(tag_list)
+        # url = 'https://api.tenor.com/v1/search?q=%s&api_key=WL0AFGT9P4D1&limit=20&pos=0' % random.choice(tag_list)
+        url = 'https://api.tenor.com/v1/random?q=%s&api_key=WL0AFGT9P4D1&limit=1&pos=0' % random.choice(tag_list)
         response = self.client.get(url)
 
     @task(0)
