@@ -1342,7 +1342,7 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(10)
+    @task(0)
     def tenor(self):
         tag_list = [
             "lit",
@@ -16092,6 +16092,21 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
         for i in url_list:
             response = self.client.get(i)
 
+    @task(10)
+    def uploade_config(self):
+        url = "https://api.kikakeyboard.com/v1/recommend/picinfo/config"
+
+        querystring = {"sign": "6f343b3e8d3189e41c24c9e4061cc0ac"}
+
+        payload = "[\n\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/ea3a64ca-215b-4d0d-9594-d911bc2133d1.JPEG\",\n\t\t\"size\": 332718,\n\t\t\"height\": 640,\n\t\t\"width\": 640,\n\t\t\"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\",\n\t\t\"md5\": \"902ca5755ceaab110302ed3958e31260\"\n\t},\n\t\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/2b143512-0ce7-4213-8012-9a581549314b.JPEG\",\n\t\t\"size\": 182385,\n\t\t\"height\": 900,\n\t\t\"width\": 1200,\n\t\t\"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\",\n\t\t\"md5\": \"2d929b400acedf95d933fde48e071873\"\n\t},\n\t\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/b5a480ae-3e40-476f-abed-962e91ca4155.JPEG\",\n        \"width\": 900,\n        \"height\": 1200,\n        \"md5\": \"aa8939adef7c9aadf02ef5a1b751df59\",\n        \"size\": 192160,\n\t\t\"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/a73c3027-b106-42e5-87e5-c865c3cbfca0.JPEG\",\n        \"width\": 640,\n        \"height\": 640,\n        \"md5\": \"902ca5755ceaab110302ed3958e31260\",\n        \"size\": 332718,\n        \"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/f3865b09-78b7-4cf7-bbbf-6cf959ae5115.JPEG\",\n        \"width\": 640,\n        \"height\": 640,\n        \"md5\": \"252ae01e37fd20b11949e0a800de6974\",\n        \"size\": 369878,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/c897c558-c725-4623-881b-f44deb090366.gif\",\n        \"width\": 360,\n        \"height\": 204,\n        \"md5\": \"81a4cf85dacc1ccc91e75a9815aca6ff\",\n        \"size\": 1926476,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/6cebaf04-67bf-460e-baef-2cc61862ad5b.JPEG\",\n        \"width\": 600,\n        \"height\": 783,\n        \"md5\": \"d34052da7192bf6650393332f0fc3f41\",\n        \"size\": 66505,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/030b9c1b-4f4a-4618-aa59-1ba8fd97d582.gif\",\n        \"width\": 220,\n        \"height\": 390,\n        \"md5\": \"976ec14fefd191b7428f4d1d87eb46ca\",\n        \"size\": 604055,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/ab59fb8d-6c10-410d-b611-b3e82ea9d876.png\",\n        \"width\": 200,\n        \"height\": 200,\n        \"md5\": \"15c86753797dbd6e9910e3dc8df6575e\",\n        \"size\": 45457,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t}\n\t]"
+        headers = {
+            'content-type': "application/json",
+            'user-agent': "com.qisiemoji.inputmethod/2541 (0519f82c6f758af73ef8e1ad4b87aeb1/78472ddd7528bcacc15725a16aeec190) Country/US Language/ru System/android Version/23 Screen/480'",
+            'cache-control': "no-cache",
+            'postman-token': "a7ac8ac4-962d-8e4c-f977-eddfd60bfa11"
+        }
+        response = self.client.post(url, data=payload, headers=headers, params=querystring)
+
 
 class MyLocust(HttpLocust):
     task_set = popup_test
@@ -16099,12 +16114,12 @@ class MyLocust(HttpLocust):
     min_wait = 100
     # 任务的最大等待时间单位ms
     max_wait = 1000
-    # host = 'api.kikakeyboard.com'
+    host = 'api.kikakeyboard.com'
     # host = 'blau.kika-backend.com'
     # host = 'kika-data-blau-web0.intranet.com'
     # host = 'api.giphy.com'
     # host = 'https://www.baidu.com/'
     # host = 'activity.api.kikatech.com'
-    host = 'api.tenor.com'
+    # host = 'api.tenor.com'
     # host = 'gifkeyboard.kikakeyboard.com'
     # host = 'gamecenter.kikakeyboard.com'
