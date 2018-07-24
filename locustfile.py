@@ -1342,7 +1342,7 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(10)
+    @task(0)
     def tenor(self):
         tag_list = [
             "lit",
@@ -16047,6 +16047,13 @@ class popup_test(TaskSet):
         # url = 'https://api.tenor.com/v1/random?q=%s&api_key=WL0AFGT9P4D1&limit=1&pos=0' % random.choice(tag_list)
         response = self.client.get(url)
 
+    @task(10)
+    def game_center(self):
+        url1 = 'https://gamecenter.kikakeyboard.com/racing_car_7_23/web-mobile/'
+        url2 = 'https://gamecenter.kikakeyboard.com/bear/bear/'
+        url_list = [url1, url2]
+        response = self.client.get(random.choice(url_list))
+
 
 class MyLocust(HttpLocust):
     task_set = popup_test
@@ -16060,5 +16067,6 @@ class MyLocust(HttpLocust):
     # host = 'api.giphy.com'
     # host = 'https://www.baidu.com/'
     # host = 'activity.api.kikatech.com'
-    host = 'api.tenor.com'
+    # host = 'api.tenor.com'
     # host = 'gifkeyboard.kikakeyboard.com'
+    host = 'gamecenter.kikakeyboard.com'
