@@ -1342,7 +1342,7 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    @task(0)
+    @task(10)
     def tenor(self):
         tag_list = [
             "lit",
@@ -16047,7 +16047,7 @@ class popup_test(TaskSet):
         # url = 'https://api.tenor.com/v1/random?q=%s&api_key=WL0AFGT9P4D1&limit=1&pos=0' % random.choice(tag_list)
         response = self.client.get(url)
 
-    @task(10)
+    @task(0)
     def game_center(self):
         # url1 = 'https://gamecenter.kikakeyboard.com/racing_car_7_23/web-mobile/'
         # url2 = 'https://gamecenter.kikakeyboard.com/bear/bear/'
@@ -16072,7 +16072,7 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%8C%89%E9%9
 http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmController/action.mp3
 '''
         url_list = ['https://gamecenter.kikakeyboard.com/bear/bear/',
-            'http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json',
                     'http://gamecenter.kikakeyboard.com/bear/bear/res/import/04/047566fe0.json',
                     'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E9%99%A8%E7%9F%B3.mp3',
                     'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/stone.plist',
@@ -16105,6 +16105,6 @@ class MyLocust(HttpLocust):
     # host = 'api.giphy.com'
     # host = 'https://www.baidu.com/'
     # host = 'activity.api.kikatech.com'
-    # host = 'api.tenor.com'
+    host = 'api.tenor.com'
     # host = 'gifkeyboard.kikakeyboard.com'
-    host = 'gamecenter.kikakeyboard.com'
+    # host = 'gamecenter.kikakeyboard.com'
