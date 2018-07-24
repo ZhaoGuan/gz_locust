@@ -16049,10 +16049,47 @@ class popup_test(TaskSet):
 
     @task(10)
     def game_center(self):
-        url1 = 'https://gamecenter.kikakeyboard.com/racing_car_7_23/web-mobile/'
-        url2 = 'https://gamecenter.kikakeyboard.com/bear/bear/'
-        url_list = [url1, url2]
-        response = self.client.get(random.choice(url_list))
+        # url1 = 'https://gamecenter.kikakeyboard.com/racing_car_7_23/web-mobile/'
+        # url2 = 'https://gamecenter.kikakeyboard.com/bear/bear/'
+        # url_list = [url1, url2]
+        '''
+http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json
+http://gamecenter.kikakeyboard.com/bear/bear/res/import/04/047566fe0.json
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E9%99%A8%E7%9F%B3.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/stone.plist
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/tail.plist
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/star.plist
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%86%8A%E5%AE%9D%E8%A2%AB%E6%89%93.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%A2%B0%E6%92%9E%E5%A3%B0.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E5%BE%97%E5%88%B0%E6%98%9F_01.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E8%AE%B0%E5%BD%95%E9%9F%B3%E6%95%88.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/combo.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%B4%AD%E4%B9%B0%E7%9A%AE%E8%82%A4.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_colorpaper/colorpaper.plist
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%8C%89%E9%92%AE%E9%9F%B3%E6%95%88.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmController/action.mp3
+'''
+        url_list = ['http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/import/04/047566fe0.json',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E9%99%A8%E7%9F%B3.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/stone.plist',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/tail.plist',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/star.plist',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%86%8A%E5%AE%9D%E8%A2%AB%E6%89%93.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%A2%B0%E6%92%9E%E5%A3%B0.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E5%BE%97%E5%88%B0%E6%98%9F_01.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E8%AE%B0%E5%BD%95%E9%9F%B3%E6%95%88.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/combo.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%B4%AD%E4%B9%B0%E7%9A%AE%E8%82%A4.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_colorpaper/colorpaper.plist',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%8C%89%E9%92%AE%E9%9F%B3%E6%95%88.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmController/action.mp3']
+        for i in url_list:
+            response = self.client.get(i)
 
 
 class MyLocust(HttpLocust):
