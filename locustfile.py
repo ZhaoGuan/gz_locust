@@ -18,6 +18,8 @@ all_data = a.url_keys_data()
 kika = Kika_base_request('api.kikakeyboard.com')
 
 
+
+
 def random_duid():
     all_world = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
                  'u', 'v', 'w', 'x', 'y', 'z']
@@ -1342,8 +1344,75 @@ class popup_test(TaskSet):
             except:
                 pass
 
+    # @task(0)
+    # def tenor(self):
+
+        # url = 'https://api.tenor.com/v1/search?q=%s&api_key=WL0AFGT9P4D1&limit=20&pos=0' % random.choice(tag_list)
+        # url = 'https://api.tenor.com/v1/random?q=%s&api_key=WL0AFGT9P4D1&limit=1&pos=0' % random.choice(tag_list)
+        # response = self.client.get(url)
+
     @task(0)
-    def tenor(self):
+    def game_center(self):
+        # url1 = 'https://gamecenter.kikakeyboard.com/racing_car_7_23/web-mobile/'
+        # url2 = 'https://gamecenter.kikakeyboard.com/bear/bear/'
+        # url_list = [url1, url2]
+        '''
+http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json
+http://gamecenter.kikakeyboard.com/bear/bear/res/import/04/047566fe0.json
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E9%99%A8%E7%9F%B3.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/stone.plist
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/tail.plist
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/star.plist
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%86%8A%E5%AE%9D%E8%A2%AB%E6%89%93.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%A2%B0%E6%92%9E%E5%A3%B0.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E5%BE%97%E5%88%B0%E6%98%9F_01.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E8%AE%B0%E5%BD%95%E9%9F%B3%E6%95%88.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/combo.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%B4%AD%E4%B9%B0%E7%9A%AE%E8%82%A4.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_colorpaper/colorpaper.plist
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%8C%89%E9%92%AE%E9%9F%B3%E6%95%88.mp3
+http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmController/action.mp3
+'''
+        url_list = ['https://gamecenter.kikakeyboard.com/bear/bear/',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/import/04/047566fe0.json',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E9%99%A8%E7%9F%B3.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/stone.plist',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/tail.plist',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/star.plist',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%86%8A%E5%AE%9D%E8%A2%AB%E6%89%93.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%A2%B0%E6%92%9E%E5%A3%B0.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E5%BE%97%E5%88%B0%E6%98%9F_01.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E8%AE%B0%E5%BD%95%E9%9F%B3%E6%95%88.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/combo.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%B4%AD%E4%B9%B0%E7%9A%AE%E8%82%A4.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_colorpaper/colorpaper.plist',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%8C%89%E9%92%AE%E9%9F%B3%E6%95%88.mp3',
+                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmController/action.mp3']
+        for i in url_list:
+            response = self.client.get(i)
+
+    @task(0)
+    def uploade_config(self):
+        url = "https://api.kikakeyboard.com/v1/recommend/picinfo/config"
+
+        querystring = {"sign": "6f343b3e8d3189e41c24c9e4061cc0ac"}
+
+        payload = "[\n\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/ea3a64ca-215b-4d0d-9594-d911bc2133d1.JPEG\",\n\t\t\"size\": 332718,\n\t\t\"height\": 640,\n\t\t\"width\": 640,\n\t\t\"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\",\n\t\t\"md5\": \"902ca5755ceaab110302ed3958e31260\"\n\t},\n\t\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/2b143512-0ce7-4213-8012-9a581549314b.JPEG\",\n\t\t\"size\": 182385,\n\t\t\"height\": 900,\n\t\t\"width\": 1200,\n\t\t\"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\",\n\t\t\"md5\": \"2d929b400acedf95d933fde48e071873\"\n\t},\n\t\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/b5a480ae-3e40-476f-abed-962e91ca4155.JPEG\",\n        \"width\": 900,\n        \"height\": 1200,\n        \"md5\": \"aa8939adef7c9aadf02ef5a1b751df59\",\n        \"size\": 192160,\n\t\t\"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/a73c3027-b106-42e5-87e5-c865c3cbfca0.JPEG\",\n        \"width\": 640,\n        \"height\": 640,\n        \"md5\": \"902ca5755ceaab110302ed3958e31260\",\n        \"size\": 332718,\n        \"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/f3865b09-78b7-4cf7-bbbf-6cf959ae5115.JPEG\",\n        \"width\": 640,\n        \"height\": 640,\n        \"md5\": \"252ae01e37fd20b11949e0a800de6974\",\n        \"size\": 369878,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/c897c558-c725-4623-881b-f44deb090366.gif\",\n        \"width\": 360,\n        \"height\": 204,\n        \"md5\": \"81a4cf85dacc1ccc91e75a9815aca6ff\",\n        \"size\": 1926476,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/6cebaf04-67bf-460e-baef-2cc61862ad5b.JPEG\",\n        \"width\": 600,\n        \"height\": 783,\n        \"md5\": \"d34052da7192bf6650393332f0fc3f41\",\n        \"size\": 66505,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/030b9c1b-4f4a-4618-aa59-1ba8fd97d582.gif\",\n        \"width\": 220,\n        \"height\": 390,\n        \"md5\": \"976ec14fefd191b7428f4d1d87eb46ca\",\n        \"size\": 604055,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/ab59fb8d-6c10-410d-b611-b3e82ea9d876.png\",\n        \"width\": 200,\n        \"height\": 200,\n        \"md5\": \"15c86753797dbd6e9910e3dc8df6575e\",\n        \"size\": 45457,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t}\n\t]"
+        headers = {
+            'content-type': "application/json",
+            'user-agent': "com.qisiemoji.inputmethod/2541 (0519f82c6f758af73ef8e1ad4b87aeb1/78472ddd7528bcacc15725a16aeec190) Country/US Language/ru System/android Version/23 Screen/480'",
+            'cache-control': "no-cache",
+            'postman-token': "a7ac8ac4-962d-8e4c-f977-eddfd60bfa11"
+        }
+        response = self.client.post(url, data=payload, headers=headers, params=querystring)
+
+    @task(10)
+    def wx(self):
         tag_list = [
             "lit",
             "fam",
@@ -11582,7 +11651,7 @@ class popup_test(TaskSet):
             "👏👏👏👏",
             "boaa",
             "aeee",
-            "boas festas", \
+            "boas festas",
             "até amanhã",
             "melhoras",
             "vivi",
@@ -16043,70 +16112,10 @@ class popup_test(TaskSet):
             "ну да",
             "давай"
         ]
-        # url = 'https://api.tenor.com/v1/search?q=%s&api_key=WL0AFGT9P4D1&limit=20&pos=0' % random.choice(tag_list)
-        url = 'https://api.tenor.com/v1/random?q=%s&api_key=WL0AFGT9P4D1&limit=1&pos=0' % random.choice(tag_list)
-        response = self.client.get(url)
-
-    @task(0)
-    def game_center(self):
-        # url1 = 'https://gamecenter.kikakeyboard.com/racing_car_7_23/web-mobile/'
-        # url2 = 'https://gamecenter.kikakeyboard.com/bear/bear/'
-        # url_list = [url1, url2]
-        '''
-http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json
-http://gamecenter.kikakeyboard.com/bear/bear/res/import/04/047566fe0.json
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E9%99%A8%E7%9F%B3.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/stone.plist
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/tail.plist
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/star.plist
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%86%8A%E5%AE%9D%E8%A2%AB%E6%89%93.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%A2%B0%E6%92%9E%E5%A3%B0.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E5%BE%97%E5%88%B0%E6%98%9F_01.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E8%AE%B0%E5%BD%95%E9%9F%B3%E6%95%88.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/combo.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%B4%AD%E4%B9%B0%E7%9A%AE%E8%82%A4.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_colorpaper/colorpaper.plist
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%8C%89%E9%92%AE%E9%9F%B3%E6%95%88.mp3
-http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmController/action.mp3
-'''
-        url_list = ['https://gamecenter.kikakeyboard.com/bear/bear/',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/import/08/08db89010.json',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/import/04/047566fe0.json',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E9%99%A8%E7%9F%B3.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/stone.plist',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/tail.plist',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sprite/star.plist',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%86%8A%E5%AE%9D%E8%A2%AB%E6%89%93.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E7%A2%B0%E6%92%9E%E5%A3%B0.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E5%BE%97%E5%88%B0%E6%98%9F_01.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%89%93%E7%A0%B4%E8%AE%B0%E5%BD%95%E9%9F%B3%E6%95%88.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/combo.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%B4%AD%E4%B9%B0%E7%9A%AE%E8%82%A4.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_colorpaper/colorpaper.plist',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/sound/%E6%8C%89%E9%92%AE%E9%9F%B3%E6%95%88.mp3',
-                    'http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmController/action.mp3']
-        for i in url_list:
-            response = self.client.get(i)
-
-    @task(10)
-    def uploade_config(self):
-        url = "https://api.kikakeyboard.com/v1/recommend/picinfo/config"
-
-        querystring = {"sign": "6f343b3e8d3189e41c24c9e4061cc0ac"}
-
-        payload = "[\n\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/ea3a64ca-215b-4d0d-9594-d911bc2133d1.JPEG\",\n\t\t\"size\": 332718,\n\t\t\"height\": 640,\n\t\t\"width\": 640,\n\t\t\"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\",\n\t\t\"md5\": \"902ca5755ceaab110302ed3958e31260\"\n\t},\n\t\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/2b143512-0ce7-4213-8012-9a581549314b.JPEG\",\n\t\t\"size\": 182385,\n\t\t\"height\": 900,\n\t\t\"width\": 1200,\n\t\t\"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\",\n\t\t\"md5\": \"2d929b400acedf95d933fde48e071873\"\n\t},\n\t\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/b5a480ae-3e40-476f-abed-962e91ca4155.JPEG\",\n        \"width\": 900,\n        \"height\": 1200,\n        \"md5\": \"aa8939adef7c9aadf02ef5a1b751df59\",\n        \"size\": 192160,\n\t\t\"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n\t\t\"url\": \"http://cdn.kikakeyboard.com/picture/a73c3027-b106-42e5-87e5-c865c3cbfca0.JPEG\",\n        \"width\": 640,\n        \"height\": 640,\n        \"md5\": \"902ca5755ceaab110302ed3958e31260\",\n        \"size\": 332718,\n        \"same\": false,\n\t\t\"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/f3865b09-78b7-4cf7-bbbf-6cf959ae5115.JPEG\",\n        \"width\": 640,\n        \"height\": 640,\n        \"md5\": \"252ae01e37fd20b11949e0a800de6974\",\n        \"size\": 369878,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/c897c558-c725-4623-881b-f44deb090366.gif\",\n        \"width\": 360,\n        \"height\": 204,\n        \"md5\": \"81a4cf85dacc1ccc91e75a9815aca6ff\",\n        \"size\": 1926476,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/6cebaf04-67bf-460e-baef-2cc61862ad5b.JPEG\",\n        \"width\": 600,\n        \"height\": 783,\n        \"md5\": \"d34052da7192bf6650393332f0fc3f41\",\n        \"size\": 66505,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/030b9c1b-4f4a-4618-aa59-1ba8fd97d582.gif\",\n        \"width\": 220,\n        \"height\": 390,\n        \"md5\": \"976ec14fefd191b7428f4d1d87eb46ca\",\n        \"size\": 604055,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t},\n\t\t{\n        \"url\": \"http://cdn.kikakeyboard.com/picture/ab59fb8d-6c10-410d-b611-b3e82ea9d876.png\",\n        \"width\": 200,\n        \"height\": 200,\n        \"md5\": \"15c86753797dbd6e9910e3dc8df6575e\",\n        \"size\": 45457,\n        \"same\": false,\n        \"author\": \"gz\",\n\t\t\"group\": \"test\"\n\t}\n\t]"
-        headers = {
-            'content-type': "application/json",
-            'user-agent': "com.qisiemoji.inputmethod/2541 (0519f82c6f758af73ef8e1ad4b87aeb1/78472ddd7528bcacc15725a16aeec190) Country/US Language/ru System/android Version/23 Screen/480'",
-            'cache-control': "no-cache",
-            'postman-token': "a7ac8ac4-962d-8e4c-f977-eddfd60bfa11"
-        }
-        response = self.client.post(url, data=payload, headers=headers, params=querystring)
-
+        use_tag_list = random.choice(tag_list,5)
+        lang = random.choice(['en','pt','in','es'])
+        URL = 'https://api.kikakeyboard.com/v1/gifsticker/search/voice_gif?lang=%s&offset=0&limit=100&tags=%s' % (lang,json.dumps(use_tag_list))
+        p = self.client.get(URL)
 
 class MyLocust(HttpLocust):
     task_set = popup_test
