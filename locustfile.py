@@ -58,7 +58,7 @@ def get_sign(app, version, duid):
 
 
 class popup_test(TaskSet):
-    @task(0)
+    @task(10)
     def popup(self):
         # self.client.header()
         lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
