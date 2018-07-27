@@ -18,8 +18,6 @@ all_data = a.url_keys_data()
 kika = Kika_base_request('api.kikakeyboard.com')
 
 
-
-
 def random_duid():
     all_world = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
                  'u', 'v', 'w', 'x', 'y', 'z']
@@ -34,7 +32,7 @@ def random_duid():
     return MD5
 
 
-def get_sign(self, app, version, duid):
+def get_sign(app, version, duid):
     if app == None or version == None or duid == None:
         sign = False
     else:
@@ -1344,12 +1342,12 @@ class popup_test(TaskSet):
             except:
                 pass
 
-    # @task(0)
-    # def tenor(self):
+                # @task(0)
+                # def tenor(self):
 
-        # url = 'https://api.tenor.com/v1/search?q=%s&api_key=WL0AFGT9P4D1&limit=20&pos=0' % random.choice(tag_list)
-        # url = 'https://api.tenor.com/v1/random?q=%s&api_key=WL0AFGT9P4D1&limit=1&pos=0' % random.choice(tag_list)
-        # response = self.client.get(url)
+                # url = 'https://api.tenor.com/v1/search?q=%s&api_key=WL0AFGT9P4D1&limit=20&pos=0' % random.choice(tag_list)
+                # url = 'https://api.tenor.com/v1/random?q=%s&api_key=WL0AFGT9P4D1&limit=1&pos=0' % random.choice(tag_list)
+                # response = self.client.get(url)
 
     @task(0)
     def game_center(self):
@@ -16112,10 +16110,12 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
             "ну да",
             "давай"
         ]
-        use_tag_list = random.choice(tag_list,5)
-        lang = random.choice(['en','pt','in','es'])
-        URL = 'https://api.kikakeyboard.com/v1/gifsticker/search/voice_gif?lang=%s&offset=0&limit=100&tags=%s' % (lang,json.dumps(use_tag_list))
+        use_tag_list = random.sample(tag_list, 5)
+        lang = random.choice(['en', 'pt', 'in', 'es'])
+        URL = 'https://api.kikakeyboard.com/v1/gifsticker/search/voice_gif?lang=%s&offset=0&limit=100&tags=%s' % (
+        lang, json.dumps(use_tag_list))
         p = self.client.get(URL)
+
 
 class MyLocust(HttpLocust):
     task_set = popup_test
