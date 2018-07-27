@@ -63,8 +63,8 @@ class popup_test(TaskSet):
         # self.client.header()
         lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
         # lang = ['en_AU']
-        tag_list = ['ok', 'pt_ok', 'es_ok']
-        # tag_list = ['mais ou menos', 'yo también amor', 'gn streaks']
+        # tag_list = ['ok', 'pt_ok', 'es_ok']
+        tag_list = ['mais ou menos', 'yo también amor', 'gn streaks', 'ok']
         tag = random.choice(tag_list)
         kb_lang = random.choice(lang)
         lang = kb_lang.split('_')[0]
@@ -1409,7 +1409,7 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
         }
         response = self.client.post(url, data=payload, headers=headers, params=querystring)
 
-    @task(10)
+    @task(0)
     def wx(self):
         tag_list = [
             "lit",
@@ -16114,7 +16114,7 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
         lang = random.choice(['en', 'pt', 'in', 'es'])
         # json.dumps(use_tag_list)
         URL = 'https://api.kikakeyboard.com/v1/gifsticker/search/voice_gif?lang=%s&offset=0&limit=100&tags=%s' % (
-        lang, str(["ok","lol","hi","good","bye"]))
+            lang, str(["ok", "lol", "hi", "good", "bye"]))
         p = self.client.get(URL)
 
 
