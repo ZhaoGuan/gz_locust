@@ -16112,8 +16112,9 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
         ]
         use_tag_list = random.sample(tag_list, 5)
         lang = random.choice(['en', 'pt', 'in', 'es'])
+        # json.dumps(use_tag_list)
         URL = 'https://api.kikakeyboard.com/v1/gifsticker/search/voice_gif?lang=%s&offset=0&limit=100&tags=%s' % (
-        lang, json.dumps(use_tag_list))
+        lang, str(["ok","lol","hi","good","bye"]))
         p = self.client.get(URL)
 
 
