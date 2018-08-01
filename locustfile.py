@@ -16177,7 +16177,7 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
         tag = random.choice(['ok', 'lol', 'good'])
         sign = get_sign(app, 2731, duid)
         header = set_header(duid, app=app, version=2731, lang=lang, way='test')
-        url = 'http://34.214.222.244:9090/backend-content-sending/multi/popup?tag=%s&kb_lang=%s&sign=%s&type=0' % (
+        url = 'http://172.31.23.134:9090/backend-content-sending/multi/popup?tag=%s&kb_lang=%s&sign=%s&type=0' % (
             tag, lang, sign)
         pop = self.client.get(url, headers=header, catch_response=True)
         with pop as response:
