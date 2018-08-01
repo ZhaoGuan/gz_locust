@@ -57,8 +57,60 @@ def get_sign(app, version, duid):
     return sign
 
 
+def set_header(duid, lang='en_AU', app='kika', version=2043, way='online'):
+    lange_config = config_reader('./lange')
+    use_lang = lange_config[lang]
+    # print('@@@@@@@@')
+    # print(use_lang)
+    if 'pro' == app:
+        app_key = '4e5ab3a6d2140457e0423a28a094b1fd'
+        security_key = '58d71c3fd1b5b17db9e0be0acc1b8048'
+        # 这个错误的
+        package_name = 'com.emoji.coolkeyboard'
+
+    elif 'ikey' == app:
+        app_key = 'e2934742f9d3b8ef2b59806a041ab389'
+        security_key = '2c7cd6555d6486c2844afa0870aac5d6'
+        # 这个错误的
+        package_name = 'com.emoji.ikeyboard'
+    else:
+        app_key = '78472ddd7528bcacc15725a16aeec190'
+        security_key = '6f43e445f47073c4272603990e9adf54'
+        package_name = 'com.qisiemoji.inputmethod'
+    if way == 'online':
+        # 线上
+        # User-Agent package_name/app_version (udif/app_key)
+        header = {'Accept-Charset': 'UTF-8',
+                  'Kika-Install-Time': '1505198889124',
+                  'Connection': 'Keep-Alive',
+                  # 'Host': 'api.kikakeyboard.com',
+                  'Accept-Language': '%s' % use_lang[0],
+                  'User-Agent': '%s/%s (%s/%s) Country/%s Language/%s System/android Version/23 Screen/480' % (
+                      package_name, version, duid, app_key, use_lang[1], use_lang[2]),
+                  'X-Model': 'D6603',
+                  'Accept-Encoding': 'gzip'
+                  }
+        # header = {
+        #     'User-Agent': '%s/%s (%s/%s) Country/%s Language/%s System/android Version/23 Screen/480' % (
+        #         package_name, version, duid, app_key, use_lang[1], use_lang[2])}
+    else:
+        # 测试
+        header = {
+            # {'Accept-Charset': 'UTF-8',
+            'Kika-Install-Time': '1505198889124',
+            'Connection': 'Keep-Alive',
+            # 'Host': 'api-dev.kikakeyboard.com',
+            'Accept-Language': '%s' % use_lang[0],
+            'User-Agent': '%s/%s (%s/%s) Country/%s Language/%s System/android Version/23 Screen/480' % (
+                package_name, version, duid, app_key, use_lang[1], use_lang[2]),
+            'X-Model': 'D6603',
+            'Accept-Encoding': 'gzip'}
+
+    return header
+
+
 class popup_test(TaskSet):
-    @task(10)
+    @task(0)
     def popup(self):
         # self.client.header()
         lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
@@ -16116,6 +16168,25 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
         URL = 'https://api.kikakeyboard.com/v1/gifsticker/search/voice_gif?lang=%s&offset=0&limit=100&tags=%s' % (
             lang, str(["ok", "lol", "hi", "good", "bye"]))
         p = self.client.get(URL)
+
+    @task(10)
+    def multi_popip(self):
+        duid = random_duid()
+        app = random.choice(['ikey', 'kika', 'pro'])
+        lang = random.choice(['en_US', 'in_ID', 'pt_BR'])
+        tag = random.choice(['ok', 'lol', 'good'])
+        sign = get_sign(app, 2731, duid)
+        header = set_header(duid, app=app, version=2731, lang=lang, way='test')
+        url = 'http://34.214.222.244:9090/backend-content-sending/multi/popup?tag=%s&kb_lang=%s&sign=%s&type=0' % (
+            tag, lang, sign)
+        pop = self.client.get(url, headers=header, catch_response=True)
+        with pop as response:
+            try:
+                if response.json()['errorMsg'] != 'ok':
+                    response.failure('wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            except:
+                pass
+                print(pop.json())
 
 
 class MyLocust(HttpLocust):
