@@ -16180,7 +16180,7 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
         url = 'http://172.31.23.134:9090/backend-content-sending/multi/popup?tag=%s&kb_lang=%s&sign=%s&type=0' % (
             tag, lang, sign)
         pop = self.client.get(url, headers=header, catch_response=True)
-        print(pop.text)
+        print(pop.json())
         with pop as response:
             try:
                 if response.json()['errorMsg'] != 'ok':
