@@ -16171,7 +16171,8 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
 
     @task(10)
     def multi_popip(self):
-        duid = random_duid()
+        # duid = random_duid()
+        duid ='175b40b82dac4a5e95e3976cebccd7ac'
         app = random.choice(['ikey', 'kika', 'pro'])
         lang = random.choice(['en_US', 'in_ID', 'pt_BR'])
         tag = random.choice(['ok', 'lol', 'good'])
