@@ -141,7 +141,7 @@ class popup_test(TaskSet):
         #     'http://172.31.23.134:9090/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=29f46eb43adec7c1a03217d0da9454d5',
         #     headers=header_online, catch_response=True)
         pop = self.client.get(
-            'http://sticker.pre.kikakeyboard.com//backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=29f46eb43adec7c1a03217d0da9454d5',
+            'http://sticker.pre.kikakeyboard.com/backend-content-sending/popup?tag=' + tag + '&kb_lang=' + kb_lang + '&sign=29f46eb43adec7c1a03217d0da9454d5',
             headers=header_online, catch_response=True)
         with pop as response:
             print(pop.json())
@@ -16178,7 +16178,9 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
         tag = random.choice(['ok', 'lol', 'good'])
         sign = get_sign(app, 2731, duid)
         header = set_header(duid, app=app, version=2731, lang=lang, way='test')
-        url = 'http://172.31.23.134:9090/backend-content-sending/multi/popup?tag=%s&kb_lang=%s&sign=%s&type=0' % (
+        # url = 'http://172.31.23.134:9090/backend-content-sending/multi/popup?tag=%s&kb_lang=%s&sign=%s&type=0' % (
+        #     tag, lang, sign)
+        url = 'http://sticker.pre.kikakeyboard.com/backend-content-sending/multi/popup?tag=%s&kb_lang=%s&sign=%s&type=0' % (
             tag, lang, sign)
         # url = 'http://172.31.23.134:9090/backend-content-sending/popup?tag=%s&kb_lang=%s&sign=%s&type=0' % (
         #     tag, lang, sign)
