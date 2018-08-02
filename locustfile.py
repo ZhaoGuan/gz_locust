@@ -58,7 +58,18 @@ def get_sign(app, version, duid):
 
 
 def set_header(duid, lang='en_AU', app='kika', version=2043, way='online'):
-    lange_config = config_reader('./lange')
+    # lange_config = config_reader('./lange')
+    lange_config = {'en_AU': ['en_AU', 'AU', 'en'],
+                   'pt_BR': ['pt_BR', 'BR', 'pt'],
+                   'es_AR': ['es_AR', 'AR', 'es'],
+                   'in_ID': ['in_ID', 'ID', 'in'],
+                   'en_US': ['en_US', 'US', 'en'],
+                   'en_CA': ['en_CA', 'CA', 'en'],
+                   'en_IN': ['en_IN', 'IN', 'en'],
+                   'en_NZ': ['en_NZ', 'NZ', 'en'],
+                   'fr': ['fr', 'US', 'fr'],
+                   'ru': ['ru', 'US', 'ru'],
+                   'es': ['es', 'ES', 'es']}
     use_lang = lange_config[lang]
     # print('@@@@@@@@')
     # print(use_lang)
@@ -16172,12 +16183,12 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
     @task(10)
     def multi_popip(self):
         # duid = random_duid()
-        duid ='175b40b82dac4a5e95e3976cebccd7ac'
+        duid = '175b40b82dac4a5e95e3976cebccd7ac'
         # app = random.choice(['ikey', 'kika', 'pro'])
         lang = random.choice(['en_US', 'in_ID', 'pt_BR'])
         tag = random.choice(['ok', 'lol', 'good'])
         # sign = get_sign(app, 2731, duid)
-        sign ='29f46eb43adec7c1a03217d0da9454d5'
+        sign = '29f46eb43adec7c1a03217d0da9454d5'
         header = set_header(duid, app='kika', version=2541, lang=lang, way='test')
         # url = 'http://172.31.23.134:9090/backend-content-sending/multi/popup?tag=%s&kb_lang=%s&sign=%s&type=0' % (
         #     tag, lang, sign)
