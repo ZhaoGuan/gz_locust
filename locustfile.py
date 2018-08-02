@@ -110,7 +110,7 @@ def set_header(duid, lang='en_AU', app='kika', version=2043, way='online'):
 
 
 class popup_test(TaskSet):
-    @task(10)
+    @task(0)
     def popup(self):
         # self.client.header()
         lang = ['en_AU', 'pt_BR', 'es_AR', 'in_ID']
@@ -16169,7 +16169,7 @@ http://gamecenter.kikakeyboard.com/bear/bear/res/raw-assets/common/module_bgmCon
             lang, str(["ok", "lol", "hi", "good", "bye"]))
         p = self.client.get(URL)
 
-    @task(0)
+    @task(10)
     def multi_popip(self):
         # duid = random_duid()
         duid ='175b40b82dac4a5e95e3976cebccd7ac'
