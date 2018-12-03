@@ -10,7 +10,7 @@ import shutil
 import time
 
 
-def config_reader(Yaml_file):
+def config_reader(yaml_file):
     yf = open(Yaml_file)
     yx = yaml.load(yf)
     yf.close()
@@ -30,7 +30,7 @@ except:
     os.mkdir('./' + dir)
 
 
-class Run_locust_test_plan():
+class RunLocustTestPlant():
     def start(self, locust_count, hatch_rate):
         url = master_host + 'swarm'
         post_data = {'locust_count': locust_count, 'hatch_rate': hatch_rate}
@@ -40,7 +40,7 @@ class Run_locust_test_plan():
     def stop(self):
         url = master_host + 'stop'
         response = requests.get(url)
-        # print(response.text)
+        print(response.text)
         print('测试结束-。-')
 
     def get_csv_report(self, locust_count):
@@ -67,7 +67,7 @@ class Run_locust_test_plan():
                 fail_number = i['num_failures']
         return {'fail_ratio': fail_ratio, 'fail_number': fail_number, 'total_rps': total_rps, 'user_count': user_count}
 
-    def get_all_report(self):
+    def get_all_reports(self):
         report_dir = './' + dir
         csvs = os.walk(report_dir)
         files = []
@@ -75,9 +75,7 @@ class Run_locust_test_plan():
         for i in csvs:
             files_temp = i[2]
         for dir_f in files_temp:
-            if ('.D' in dir_f) or ('all' in dir_f):
-                pass
-            else:
+            if ('.D' not in dir_f) or ('all' not in dir_f):
                 files.append(dir_f)
         distribution_first_line = ['Name', '# requests', '50%', '66%', '75%', '80%', '90%', '95%', '98%', '99%', '100%']
         request_first_line = ['Method', 'Name', '# requests', '# failures', 'Median response time',
@@ -112,14 +110,8 @@ class Run_locust_test_plan():
                         request.append(request_temp)
         else:
             assert 1 + 1 > 2, '未发现csv报告'
-        # distribution_report_first_line = ['User Number', 'Name', '# requests', '50%', '66%', '75%', '80%', '90%', '95%',
-        #                                   '98%', '99%', '100%']
         distribution_report_first_line = ['User Number', '# requests', '50%', '66%', '75%', '80%', '90%', '95%',
                                           '98%', '99%', '100%']
-        # request_report_first_line = ['User Number', 'Method', 'Name', '# requests', '# failures',
-        #                              'Median response time',
-        #                              'Average response time',
-        #                              'Min response time', 'Max response time', 'Average Content Size', 'Requests/s']
         request_report_first_line = ['User Number', '# requests', '# failures',
                                      'Median response time',
                                      'Average response time',
@@ -154,13 +146,11 @@ class Run_locust_test_plan():
                 now_user_number = self.get_false(locust_count)
                 if str(now_user_number) == 'False':
                     return False
-                    break
                 else:
                     if now_user_number >= locust_count:
                         time.sleep(duration)
                         self.get_csv_report(locust_count)
                         return True
-                        break
                     else:
                         time.sleep(check_stat_time)
         else:
@@ -172,16 +162,13 @@ class Run_locust_test_plan():
             plan_hatch_rate = i['hatch_rate']
             print('执行用户数为' + str(plan_locust_count) + '的测试')
             test = self.run_test(plan_locust_count, plan_hatch_rate, duration)
-            if test == True:
-                pass
-            else:
+            if test is False:
                 print(test)
                 print('在用户数为' + str(plan_locust_count) + '时出现错误')
                 break
         self.stop()
-        self.get_all_report()
+        self.get_all_reports()
 
 
 if __name__ == "__main__":
-    Run_locust_test_plan().run_plan()
-    # Run_locust_test_plan.get_all_report()
+    RunLocustTestPlant().run_plan()
