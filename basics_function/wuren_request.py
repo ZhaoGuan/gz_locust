@@ -79,7 +79,7 @@ class FiveNut:
         if source == "test":
             token_url = "http://api.dev.wuren.com:8080/v1/identity/login"
         else:
-            token_url = "http://api.wuren.com:8080/v1/identity/login"
+            token_url = "https://api.5nuthost.com/v1/identity/login"
         try:
             response = requests.post(token_url, json={"sign": sign}, headers=headers)
             token = json.loads(response.text)["info"]["token"]
