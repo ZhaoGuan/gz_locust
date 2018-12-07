@@ -65,7 +65,8 @@ class GetToken:
         # print(self.header())
         header = self.header()["header"]
         time_stamp = self.header()["time_stamp"]
-        response = requests.post(token_url, json={"sign": self.get_sign(time_stamp)}, headers=header)
+        response = requests.post(token_url, json={"sign": self.get_sign(time_stamp), "identity": "meme-app"},
+                                 headers=header)
         if response.status_code == 200:
             try:
                 token = json.loads(response.text)["info"]["token"]
