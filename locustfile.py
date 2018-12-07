@@ -553,7 +553,7 @@ class WuRen(TaskSet):
                      'path': './case/meme/create_list.yml'}
         true_requets(self.client, case_data)
 
-    @task(10)
+    @task(0)
     def user_upload(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -618,7 +618,7 @@ class WuRen(TaskSet):
                               'DATA_CONTENT': None, 'RESPONSE_HEADER': None}, 'path': './case/meme/!user_upload.yml'}
         true_requets(self.client, case_data)
 
-    @task(0)
+    @task(10)
     def user_list(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
