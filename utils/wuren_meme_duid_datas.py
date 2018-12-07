@@ -92,14 +92,14 @@ def registry_duid_tokens(no):
         data = GT.registry()
         result.append(data)
         if len(result) == no:
-            with open(PATH + "/utils/duid_token.yaml", "w") as f:
+            with open(PATH + "/duid_token.yaml", "w") as f:
                 yaml.dump(result, f, default_flow_style=False)
             break
 
 
 def reflash_token():
     GT = GetToken()
-    path = PATH + "/utils/duid_token.yaml"
+    path = PATH + "/duid_token.yaml"
     data = config_reader(path)
     result = []
     count = 0
@@ -110,7 +110,7 @@ def reflash_token():
         print(result)
         count += 1
         print(count)
-    with open(PATH + "/utils/duid_token.yaml", "w") as f:
+    with open(PATH + "/duid_token.yaml", "w") as f:
         yaml.dump(result, f, default_flow_style=False)
 
 
