@@ -681,7 +681,8 @@ class WuRen(TaskSet):
         data = duid + "_" + language + "_" + time_stamp + "_" + str(version) + "_" + salt
         sign = MD5(data)
         token_url = "https://api.5nuthost.com/v1/identity/registry"
-        response = self.client.post(token_url, json={"sign": sign, "identity": "meme-app"}, headers=header)
+        response = self.client.post(token_url, json={"sign": sign, "identity": "meme-app"}, headers=header,
+                                    catch_response=True)
         print(response.json())
         print(response.status_code)
         if response.status_code == 200 and response.json()["errorMsg"] != "ok":
