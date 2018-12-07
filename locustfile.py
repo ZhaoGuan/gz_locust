@@ -172,7 +172,6 @@ user_datas = [{'duid': '20181207-6a06f180-f9cf-11e8-bf1c-ea00e4d87701', 'token':
               {'duid': '20181207-d8616e80-f9cf-11e8-bf1c-ea00e4d87701', 'token': '536f0d51f2c84f9a86d45e1f4ca20504'},
               {'duid': '20181207-d91f210a-f9cf-11e8-bf1c-ea00e4d87701', 'token': '152e03307f464da7ac0823841f1c0927'},
               {'duid': '20181207-d9cb11f4-f9cf-11e8-bf1c-ea00e4d87701', 'token': '7f2458a6fc9b4924b3f72eca76cc1889'},
-              {'duid': '20181207-da6fc01e-f9cf-11e8-bf1c-ea00e4d87701b6020a93d3a'},
               {'duid': '20181207-de493df0-f9cf-11e8-bf1c-ea00e4d87701', 'token': '365c7908a2f14a6caea680ee6693461d'},
               {'duid': '20181207-dee17eee-f9cf-11e8-bf1c-ea00e4d87701', 'token': '0ac1610b80244287877a2e2055f99e96'},
               {'duid': '20181207-df78da6e-f9cf-11e8-bf1c-ea00e4d87701', 'token': 'c3a427c41fd04541928481456e968edf'},
@@ -366,26 +365,7 @@ class WuRen(TaskSet):
                               'RESPONSE_HEADER': None, 'THE_FLOWING': None,
                               'THE_ABOVE': {'TYPE': 'BODY', 'KEY': None, 'DATA': 'info/group_list/^/title'}},
                      'path': './case/search/search_hot.yml'}
-        # true_requets(self.client, case_data)
-        HT = HttpTest(case_data, source)
-        case = HT.case_data()
-        data = HT.url_request_data(random.choice(case))
-        request_header = data["request_header"]
-        body = data["body"]
-        request_type = data["request_type"]
-        url = data["url"]
-        if request_type == "post":
-            response = self.client.post(url=url, headers=request_header, json=body, catch_response=True)
-        else:
-            response = self.client.get(url=url, headers=request_header, catch_response=True)
-        print(response.json())
-        print(response.status_code)
-        if response.status_code == 200 and response.json()["errorMsg"] != "ok":
-            response.failure("errorMsg is Fail")
-        else:
-            response.success()
-        print(request_header)
-        print(response.json())
+        true_requets(self.client, case_data)
 
     @task(0)
     def search_fall(self):
