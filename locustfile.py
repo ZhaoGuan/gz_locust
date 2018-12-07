@@ -7,6 +7,7 @@ import os
 import random
 import time
 import uuid
+import datetime
 from basics_function.wuren_locust import HttpTest
 from basics_function.golable_function import MD5, config_reader
 
