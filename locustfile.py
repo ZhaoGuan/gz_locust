@@ -288,7 +288,7 @@ def true_requets(client, case_data):
     print(response.json())
     print(response.status_code)
     if response.status_code == 200 and response.json()["errorMsg"] != "ok":
-        response.failure("errorMsg is Fail")
+        response.failure("errorMsg is Fail" + str(response.json()))
     else:
         response.success()
     print(request_header)
