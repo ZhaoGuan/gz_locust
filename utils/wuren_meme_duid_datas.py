@@ -99,7 +99,7 @@ def registry_duid_tokens(no):
 
 def reflash_token():
     GT = GetToken()
-    path = "./duid_token.yaml"
+    path = PATH + "/utils/duid_token.yaml"
     data = config_reader(path)
     result = []
     count = 0
