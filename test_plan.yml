@@ -6,9 +6,9 @@ plan: [
 #{'locust_count': 2000, 'hatch_rate': 50},
 #{'locust_count': 2000, 'hatch_rate': 50},
 #{'locust_count': 2500, 'hatch_rate': 50}
-  {'locust_count': 300, 'hatch_rate': 50},
   {'locust_count': 500, 'hatch_rate': 50},
-  {'locust_count': 700, 'hatch_rate': 50}
+  {'locust_count': 700, 'hatch_rate': 50},
+  {'locust_count': 850, 'hatch_rate': 50}
 ]
 #时间单位S
 duration: 60

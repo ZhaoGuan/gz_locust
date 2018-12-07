@@ -373,7 +373,7 @@ class WuRen(TaskSet):
                      'path': './case/search/search_hot.yml'}
         true_requets(self.client, case_data)
 
-    @task(10)
+    @task(0)
     def search_fall(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -471,7 +471,7 @@ class WuRen(TaskSet):
         print(request_header)
         print(response.json())
 
-    @task(0)
+    @task(10)
     def create_category(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
