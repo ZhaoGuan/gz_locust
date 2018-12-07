@@ -1,9 +1,11 @@
-master_host: http://0.0.0.0:9090/
-dir : 20180723US_est
-plan : [
-        {'locust_count': 500, 'hatch_rate': 50},
-        {'locust_count': 1000, 'hatch_rate': 50},
-        {'locust_count': 1500, 'hatch_rate': 50},
-        ]
+master_host: http://18.217.11.105:8089/
+dir: wuren_login_201812-7
+plan: [
+{'locust_count': 1000, 'hatch_rate': 50},
+{'locust_count': 1500, 'hatch_rate': 50},
+{'locust_count': 2000, 'hatch_rate': 50},
+{'locust_count': 2000, 'hatch_rate': 50},
+{'locust_count': 2500, 'hatch_rate': 50}
+]
 #时间单位S
-duration : 60
+duration: 60

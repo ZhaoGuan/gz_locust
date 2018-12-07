@@ -11,7 +11,7 @@ import time
 
 
 def config_reader(yaml_file):
-    yf = open(Yaml_file)
+    yf = open(yaml_file)
     yx = yaml.load(yf)
     yf.close()
     return yx
