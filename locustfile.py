@@ -406,7 +406,7 @@ class WuRen(TaskSet):
                        'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT',
                                 'DATA': {'id': ['0'],
                                          'limit': [20],
-                                         'token': token}}}},
+                                         'token': [token]}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'DATA': {'errorCode': 'Str', 'errorMsg': 'Str', 'info': {
                                   'pic_list': [{'tiny': {'url': 'HTTP', 'height': 'Int', 'width': 'Int', 'size': 'Int'},
                                                 'origin': {'url': 'HTTP', 'height': 'Int', 'width': 'Int',
@@ -453,7 +453,7 @@ class WuRen(TaskSet):
                        'PARAMS': {'TYPE': 'NORMAL', 'DATA': None}, 'MODE': {'TYPE': 'POST'},
                        'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT',
                                 'DATA': {'search': ['Assembly', "be cool", "ok", 'yes', "good"],
-                                         'token': token,
+                                         'token': [token],
                                          'index': [0, 10, 20, 40],
                                          'limit': [20]}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'DATA': {'errorCode': 'Str', 'errorMsg': 'Str', 'info': {
@@ -523,7 +523,7 @@ class WuRen(TaskSet):
                            'version': ['1.0.0'], 'duid': [duid], 'lang': ['en_US']}},
                        'PARAMS': {'TYPE': 'NORMAL', 'DATA': None}, 'MODE': {'TYPE': 'POST'},
                        'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT',
-                                'DATA': {"token": token, 'category': ['test'], 'index': [0], 'limit': [20]}}}},
+                                'DATA': {"token": [token], 'category': ['test'], 'index': [0], 'limit': [20]}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'EXTRA': {'LIST_REPEATED': False, 'LIST_EMPTY': False},
                                               'DATA': {'errorCode': 'Str', 'errorMsg': 'Str', 'info': {'group_list': [
                                                   {'title': 'Str', 'pic_list': [{'item_id': 'Str',
@@ -555,7 +555,7 @@ class WuRen(TaskSet):
             'online': {'URL': 'https://api.5nuthost.com/v1/app/meme/create/list',
                        'HEADERS': {'TYPE': '5NUT', 'DATA': {'version': [1477], 'duid': [duid], 'lang': ['en_US']}},
                        'PARAMS': {'TYPE': 'NORMAL', 'DATA': None}, 'MODE': {'TYPE': 'POST'},
-                       'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT', 'DATA': {'token': token, 'title': ['baby']}}}},
+                       'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT', 'DATA': {'token': [token], 'title': ['baby']}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'DATA': {'errorCode': 'Str', 'errorMsg': 'Str', 'info': {
                                   'pic_list': [{'item_id': 'Str',
                                                 'tiny': {'url': 'HTTP', 'height': 'Int', 'width': 'Int', 'size': 'Int'},
@@ -584,7 +584,7 @@ class WuRen(TaskSet):
                        'PARAMS': {'TYPE': 'NORMAL', 'DATA': None}, 'MODE': {'TYPE': 'POST'},
                        'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT',
                                 'DATA': {
-                                    "token": token,
+                                    "token": [token],
                                     'pic_infos':
                                         [[{'info': 'test',
                                            'origin_id': 'test',
@@ -646,7 +646,7 @@ class WuRen(TaskSet):
                        'HEADERS': {'TYPE': '5NUT', 'DATA': {'version': [1477], 'duid': [duid], 'lang': ['en_US']}},
                        'PARAMS': {'TYPE': 'NORMAL', 'DATA': None}, 'MODE': {'TYPE': 'POST'},
                        'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT',
-                                'DATA': {'token': token, 'index': [0], 'limit': [20]}}}},
+                                'DATA': {'token': [token], 'index': [0], 'limit': [20]}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'EXTRA': {'LIST_REPEATED': False},
                                               'DATA': {'errorCode': 'Str', 'errorMsg': 'Str',
                                                        'info': {'pic_list': [{
