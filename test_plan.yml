@@ -1,5 +1,5 @@
 master_host: http://18.217.11.105:8089/
-dir: wuren_login_201812-7
+dir: wuren_registry_201812-7
 plan: [
 {'locust_count': 1000, 'hatch_rate': 50},
 {'locust_count': 1500, 'hatch_rate': 50},

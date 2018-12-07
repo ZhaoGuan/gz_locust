@@ -303,7 +303,7 @@ def true_requets(client, case_data):
 
 class WuRen(TaskSet):
 
-    @task(0)
+    @task(10)
     def login(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -670,7 +670,7 @@ class WuRen(TaskSet):
                               'DATA_CONTENT': None, 'RESPONSE_HEADER': None}, 'path': './case/meme/user_list.yml'}
         true_requets(self.client, case_data)
 
-    @task(10)
+    @task(0)
     def registry(self):
         language = "en_US"
         version = "1"
