@@ -49,10 +49,12 @@ class GetToken:
             try:
                 token = json.loads(response.text)["info"]["token"]
             except:
+                print(response.status_code)
                 print(response.text)
                 print(duid)
                 assert False, "获取token错误"
         else:
+            print(response.status_code)
             print(response.text)
         return {"duid": self.duid, "token": token}
 
@@ -72,6 +74,7 @@ class GetToken:
                 token = json.loads(response.text)["info"]["token"]
                 print("！！！！！！！")
             except:
+                print(response.status_code)
                 print(response.text)
                 assert False, "获取token错误"
         else:
