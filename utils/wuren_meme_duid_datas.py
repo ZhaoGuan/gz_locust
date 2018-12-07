@@ -21,13 +21,14 @@ class GetToken:
         self.duid = None
 
     def header(self):
-        return {'User-Agent': self.duid + "#&#" + language + "#&#" + str(time_stamp) + "#&#" + str(version)}
+        time_stamp = str(int(round(time.time() * 1000)))
+        return {"header": {
+            'User-Agent': self.duid + "#&#" + language + "#&#" + time_stamp + "#&#" + str(
+                version)}, "time_stamp": time_stamp}
 
-    def get_sign(self):
-        data = self.duid + "_" + language + "_" + str(int(round(time.time() * 1000))) + "_" + str(version) + "_" + salt
-        print(data)
+    def get_sign(self, time_stamp):
+        data = self.duid + "_" + language + "_" + time_stamp + "_" + str(version) + "_" + salt
         result = MD5(data)
-        print(result)
         return result
 
     def random_duid(self):
@@ -40,13 +41,16 @@ class GetToken:
             token_url = "http://api.dev.wuren.com:8080/v1/identity/login"
         else:
             token_url = "https://api.5nuthost.com/v1/identity/login"
-        # print(self.header())
-        response = requests.post(token_url, json={"sign": self.get_sign()}, headers=self.header())
+        print(self.header())
+        header = self.header()["header"]
+        time_stamp = self.header()["time_stamp"]
+        response = requests.post(token_url, json={"sign": self.get_sign(time_stamp)}, headers=header)
         if response.status_code == 200:
             try:
                 token = json.loads(response.text)["info"]["token"]
             except:
                 print(response.text)
+                print(duid)
                 assert False, "获取token错误"
         else:
             print(response.text)
@@ -59,8 +63,9 @@ class GetToken:
         else:
             token_url = "https://api.5nuthost.com/v1/identity/registry"
         # print(self.header())
-        response = requests.post(token_url, json={"sign": self.get_sign(), "identity": "meme-app"},
-                                 headers=self.header())
+        header = self.header()["header"]
+        time_stamp = self.header()["time_stamp"]
+        response = requests.post(token_url, json={"sign": self.get_sign(time_stamp)}, headers=header)
         if response.status_code == 200:
             try:
                 token = json.loads(response.text)["info"]["token"]
@@ -95,13 +100,14 @@ def reflash_token():
         duid = i["duid"]
         duid_token = GT.login_token(duid)
         result.append(duid_token)
+        print(result)
     with open("./duid_token.yaml", "w") as f:
         yaml.dump(result, f, default_flow_style=False)
 
 
 if __name__ == "__main__":
     # registry_duid_tokens(1000)
-    # reflash_token()
+    reflash_token()
     result = [{'duid': '20181207-6a06f180-f9cf-11e8-bf1c-ea00e4d87701', 'token': '86cca4af224b4f32bf4a6ae62929de09'},
               {'duid': '20181207-6b1499f6-f9cf-11e8-bf1c-ea00e4d87701', 'token': 'fcda3c3b3bea43fda42c809e3a000403'},
               {'duid': '20181207-6bce83c0-f9cf-11e8-bf1c-ea00e4d87701', 'token': '3ea017009e754b87ada9fb3abba199a1'},
@@ -363,5 +369,5 @@ if __name__ == "__main__":
               {'duid': '20181207-1906ed2a-f9d0-11e8-bf1c-ea00e4d87701', 'token': 'b7a21d9a43c64fbcb30efa37ed867a33'},
               {'duid': '20181207-19a39328-f9d0-11e8-bf1c-ea00e4d87701', 'token': '15bdabf0f8d3402d8619d98ab280ed20'},
               {'duid': '20181207-1a4f1ea0-f9d0-11e8-bf1c-ea00e4d87701', 'token': 'eb5e2839571c4317a8d6213155b732fe'}]
-    with open("./duid_token.yaml", "w") as f:
-        yaml.dump(result, f, default_flow_style=False)
+    # with open("./duid_token.yaml", "w") as f:
+    #     yaml.dump(result, f, default_flow_style=False)
