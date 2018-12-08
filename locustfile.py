@@ -509,7 +509,7 @@ class WuRen(TaskSet):
                            'version': ['1.0.0'], 'duid': [duid], 'lang': ['en_US']}},
                        'PARAMS': {'TYPE': 'NORMAL', 'DATA': None}, 'MODE': {'TYPE': 'POST'},
                        'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT',
-                                'DATA': {"token": [token], 'category': ['all'], 'index': [0], 'limit': [20]}}}},
+                                'DATA': {"token": [token], 'category': ['all'], 'index': [0], 'limit': [10]}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'EXTRA': {'LIST_REPEATED': False, 'LIST_EMPTY': False},
                                               'DATA': {'errorCode': 'Str', 'errorMsg': 'Str', 'info': {'group_list': [
                                                   {'title': 'Str', 'pic_list': [{'item_id': 'Str',
