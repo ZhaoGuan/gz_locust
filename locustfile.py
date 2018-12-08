@@ -13,9 +13,7 @@ from basics_function.golable_function import MD5, config_reader
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 
-user_datas = {'header': {'User-Agent': '20181207-1a4f1ea0-f9d0-11e8-bf1c-ea00e4d87701#&#en_US#&#1544243678434#&#1'},
-              'time_stamp': '1544243678434'}
-case_data = [{'duid': '20181207-6a06f180-f9cf-11e8-bf1c-ea00e4d87701', 'token': '828e022d7d7f41029052f932f96cd850'},
+user_datas = [{'duid': '20181207-6a06f180-f9cf-11e8-bf1c-ea00e4d87701', 'token': '828e022d7d7f41029052f932f96cd850'},
              {'duid': '20181207-6b1499f6-f9cf-11e8-bf1c-ea00e4d87701', 'token': '20fc0cf6045644ee856d390ec77452a2'},
              {'duid': '20181207-6bce83c0-f9cf-11e8-bf1c-ea00e4d87701', 'token': '9f6cbddc35b64ad1bfec31aa56bc97c8'},
              {'duid': '20181207-6c7a6f8c-f9cf-11e8-bf1c-ea00e4d87701', 'token': 'a80503f22e274861bf89d81c14280571'},
