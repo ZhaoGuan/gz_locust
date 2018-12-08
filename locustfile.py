@@ -471,7 +471,7 @@ class WuRen(TaskSet):
         print(request_header)
         print(response.json())
 
-    @task(10)
+    @task(0)
     def create_category(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -493,7 +493,7 @@ class WuRen(TaskSet):
                               'path': './case/meme/create_category.yml'}}
         true_requets(self.client, case_data)
 
-    @task(0)
+    @task(10)
     def create_home(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -509,7 +509,7 @@ class WuRen(TaskSet):
                            'version': ['1.0.0'], 'duid': [duid], 'lang': ['en_US']}},
                        'PARAMS': {'TYPE': 'NORMAL', 'DATA': None}, 'MODE': {'TYPE': 'POST'},
                        'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT',
-                                'DATA': {"token": [token], 'category': ['test'], 'index': [0], 'limit': [20]}}}},
+                                'DATA': {"token": [token], 'category': ['all'], 'index': [0], 'limit': [20]}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'EXTRA': {'LIST_REPEATED': False, 'LIST_EMPTY': False},
                                               'DATA': {'errorCode': 'Str', 'errorMsg': 'Str', 'info': {'group_list': [
                                                   {'title': 'Str', 'pic_list': [{'item_id': 'Str',

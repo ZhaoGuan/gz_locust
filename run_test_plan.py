@@ -46,14 +46,16 @@ class RunLocustTestPlant():
     def get_csv_report(self, locust_count):
         request_csv_url = master_host + 'stats/requests/csv'
         distribution_csv_url = master_host + 'stats/distribution/csv'
+        response_request_csv = None
+        response_distribution_csv = None
         response_request_csv = requests.get(request_csv_url)
         with open('./' + dir + '/' + str(locust_count) + '_request_report.csv', 'w') as request_f:
-            for row in response_request_csv.text:
-                request_f.write(row)
+            print(response_request_csv.text)
+            request_f.write(response_request_csv.text)
         response_distribution_csv = requests.get(distribution_csv_url)
         with open('./' + dir + '/' + str(locust_count) + '_distribution_report.csv', 'w') as distribution_f:
-            for row in response_distribution_csv.text:
-                distribution_f.write(row)
+            print(response_distribution_csv.text)
+            distribution_f.write(response_distribution_csv.text)
 
     def get_state(self):
         url = master_host + 'stats/requests'
