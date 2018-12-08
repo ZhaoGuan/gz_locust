@@ -341,7 +341,7 @@ class WuRen(TaskSet):
         print(request_header)
         print(response.json())
 
-    @task(10)
+    @task(0)
     def search_hot(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -471,7 +471,7 @@ class WuRen(TaskSet):
         print(request_header)
         print(response.json())
 
-    @task(0)
+    @task(10)
     def create_category(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
