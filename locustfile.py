@@ -493,7 +493,7 @@ class WuRen(TaskSet):
                               'path': './case/meme/create_category.yml'}}
         true_requets(self.client, case_data)
 
-    @task(10)
+    @task(0)
     def create_home(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -528,7 +528,7 @@ class WuRen(TaskSet):
                               'THE_ABOVE': {'DATA': 'info/group_list/^/title'}}, 'path': './case/meme/create_home.yml'}
         true_requets(self.client, case_data)
 
-    @task(0)
+    @task(10)
     def create_list(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -541,7 +541,7 @@ class WuRen(TaskSet):
             'online': {'URL': 'https://api.5nuthost.com/v1/app/meme/create/list',
                        'HEADERS': {'TYPE': '5NUT', 'DATA': {'version': [1477], 'duid': [duid], 'lang': ['en_US']}},
                        'PARAMS': {'TYPE': 'NORMAL', 'DATA': None}, 'MODE': {'TYPE': 'POST'},
-                       'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT', 'DATA': {'token': [token], 'title': ['baby']}}}},
+                       'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT', 'DATA': {'token': [token], 'title': ['Trump']}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'DATA': {'errorCode': 'Str', 'errorMsg': 'Str', 'info': {
                                   'pic_list': [{'item_id': 'Str',
                                                 'tiny': {'url': 'HTTP', 'height': 'Int', 'width': 'Int', 'size': 'Int'},
