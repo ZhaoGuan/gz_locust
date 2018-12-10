@@ -50,6 +50,4 @@ def list_duplicate_removal(data):
     for i in data:
         if i not in result:
             result.append(i)
-        else:
-            pass
     return result

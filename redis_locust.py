@@ -79,12 +79,12 @@ class RedisLocust(Locust):
         self.client = RedisClient(host=self.host, port=6379, db=1, connection_pool=pool)
 
 
-class Redis_test(RedisLocust):
+class RedisTest(RedisLocust):
     host = 'kika-data-blau-redis0.intranet.com'
     min_wait = 100
     max_wait = 1000
 
-    class task_set(TaskSet):
+    class TaskSet(TaskSet):
         @task(10)
         def duid_data(self):
             keys = ['USER_RECENT_NUM_82c0aee98c6f4cc7852ee607442bb44a',

@@ -6,9 +6,6 @@ import random
 import threading
 from basics_function.golable_function import config_reader, config_data_path, list_duplicate_removal
 from basics_function.wuren_request import FiveNut
-from basics_function.kika_base_request import Kika_base_request
-
-kika = Kika_base_request("")
 
 
 class HttpTest:
@@ -209,15 +206,8 @@ class HttpTest:
     def url_mosaic_type(self, data):
         url = self.url
         parameters = copy.deepcopy(data["parameters"])
-        headers = data["headers"]
+        # headers = data["headers"]
         if self.params["TYPE"] == "JOINT" and self.params["DATA"] is not None:
-            for key, value in parameters.items():
-                url += str(key) + "=" + str(value) + "&"
-            result_url = url[:-1]
-        elif self.params["TYPE"] == "KIKA" and self.params["DATA"] is not None:
-            sign = kika.get_sign(headers["app"], headers["version"], parameters["duid"])
-            parameters.update({"sign": sign})
-            parameters.pop("duid")
             for key, value in parameters.items():
                 url += str(key) + "=" + str(value) + "&"
             result_url = url[:-1]
@@ -246,18 +236,12 @@ class HttpTest:
         # """
         headers_type = self.headers["TYPE"]
         headers_data = data["headers"]
-        parameters_data = data["parameters"]
+        # parameters_data = data["parameters"]
         if headers_data is not None:
             if headers_type == "local":
                 headers = headers_data
             elif headers_type == "config":
                 headers = config_reader("./config/%s.yml" % headers_data)
-            elif headers_type == "KIKA":
-                if self.params["DATA"] is not None:
-                    headers = kika.set_header(duid=parameters_data["duid"], lang=parameters_data["kb_lang"],
-                                              app=headers_data["app"], version=headers_data["version"])
-                else:
-                    headers = None
             elif headers_type == "5NUT":
                 headers = self.fivenut.set_header(data)
             # NORMAL默认为None
@@ -279,7 +263,7 @@ class HttpTest:
                 return {"url": url, "request_header": request_header, "body": body, "request_type": "post"}
             elif data["body"]["type"] == "FILE":
                 try:
-                    file_path = body["file_path"]
+                    # file_path = body["file_path"]
                     body.pop("file_path")
                 except:
                     assert False, "未发现file_path"

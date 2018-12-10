@@ -19,12 +19,6 @@ class FiveNut:
         self._value_lock = threading.Lock()
         self.duid = None
 
-    # def get_sign(self, data):
-    #     with self._value_lock:
-    #         if self.duid != data["headers"]["duid"]:
-    #             self.sign = self.get_sign_value(data)
-    #         return self.sign
-
     def get_sign(self, data):
         header_data = data["headers"]
         try:
@@ -64,12 +58,6 @@ class FiveNut:
         new_header_data.update(
             {"User-Agent": duid + "#&#" + language + "#&#" + str(self.time_stamp) + "#&#" + str(version)})
         return new_header_data
-
-    # def get_token(self, data, headers, source):
-    #     with self._value_lock:
-    #         if self.token is None:
-    #             self.token = self.get_token_value(data, headers, source)
-    #         return self.token
 
     def get_token(self, data, headers, source):
         if self.sign is None or self.duid != data["headers"]["duid"]:

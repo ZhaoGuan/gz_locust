@@ -400,26 +400,7 @@ class WuRen(TaskSet):
                               'DATA_CONTENT': None, 'RESPONSE_HEADER': None, 'THE_FLOWING': None,
                               'THE_ABOVE': {'TYPE': 'BODY', 'KEY': None, 'DATA': 'info/group_list/^/title'}},
                      'path': './case/search/search_fall.yml'}
-        # true_requets(self.client, case_data)
-        HT = HttpTest(case_data, source)
-        case = HT.case_data()
-        data = HT.url_request_data(random.choice(case))
-        request_header = data["request_header"]
-        body = data["body"]
-        request_type = data["request_type"]
-        url = data["url"]
-        if request_type == "post":
-            response = self.client.post(url=url, headers=request_header, json=body, catch_response=True)
-        else:
-            response = self.client.get(url=url, headers=request_header, catch_response=True)
-        print(response.json())
-        print(response.status_code)
-        if response.status_code == 200 and response.json()["errorMsg"] != "ok":
-            response.failure("errorMsg is Fail")
-        else:
-            response.success()
-        print(request_header)
-        print(response.json())
+        true_requets(self.client, case_data)
 
     @task(0)
     def search_home(self):
@@ -450,26 +431,7 @@ class WuRen(TaskSet):
                               'RESPONSE_HEADER': None, 'THE_FLOWING': None,
                               'THE_ABOVE': {'TYPE': 'BODY', 'KEY': None, 'DATA': 'info/group_list/^/title'}},
                      'path': './case/search/search_home.yml'}
-        # true_requets(self.client, case_data)
-        HT = HttpTest(case_data, source)
-        case = HT.case_data()
-        data = HT.url_request_data(random.choice(case))
-        request_header = data["request_header"]
-        body = data["body"]
-        request_type = data["request_type"]
-        url = data["url"]
-        if request_type == "post":
-            response = self.client.post(url=url, headers=request_header, json=body, catch_response=True)
-        else:
-            response = self.client.get(url=url, headers=request_header, catch_response=True)
-        print(response.json())
-        print(response.status_code)
-        if response.status_code == 200 and response.json()["errorMsg"] != "ok":
-            response.failure("errorMsg is Fail")
-        else:
-            response.success()
-        print(request_header)
-        print(response.json())
+        true_requets(self.client, case_data)
 
     @task(0)
     def create_category(self):

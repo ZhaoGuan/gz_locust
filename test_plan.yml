@@ -1,10 +1,11 @@
 master_host: http://18.217.11.105:8089/
-dir: wuren_search_hot_201812-8_0
+dir: wuren_create_home_201812-8_0
 plan: [
+{'locust_count': 300, 'hatch_rate': 50},
 {'locust_count': 500, 'hatch_rate': 50},
-{'locust_count': 800, 'hatch_rate': 50},
-{'locust_count': 1000, 'hatch_rate': 50},
-  {'locust_count': 1400, 'hatch_rate': 50},
+{'locust_count': 650, 'hatch_rate': 50},
+#{'locust_count': 1000, 'hatch_rate': 50},
+#  {'locust_count': 1400, 'hatch_rate': 50},
   #{'locust_count': 2000, 'hatch_rate': 50},
   #{'locust_count': 2000, 'hatch_rate': 50},
   #{'locust_count': 2500, 'hatch_rate': 50}
