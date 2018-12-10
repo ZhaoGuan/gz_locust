@@ -303,7 +303,7 @@ def true_requets(client, case_data):
 
 class WuRen(TaskSet):
 
-    @task(0)
+    @task(10)
     def login(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -455,7 +455,7 @@ class WuRen(TaskSet):
                               'path': './case/meme/create_category.yml'}}
         true_requets(self.client, case_data)
 
-    @task(10)
+    @task(0)
     def create_home(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']

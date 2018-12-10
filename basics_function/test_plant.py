@@ -8,6 +8,7 @@ import csv
 import os
 import shutil
 import time
+from basics_function.get_zabbix_data import ZabbixData
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -24,15 +25,26 @@ master_host = config['master_host']
 dir = str(config['dir'])
 plan = config['plan']
 duration = config['duration']
+# duration 不能少于3分钟，不然zabbix手机的数据不准
+if int(duration) < 180:
+    duration = 180
 check_stat_time = 1
+try:
+    host_name = config["host_name"]
+except:
+    host_name = None
 try:
     os.mkdir(PATH + '/../report/' + dir)
 except:
     shutil.rmtree(PATH + '/../report/' + dir)
     os.mkdir(PATH + '/../report/' + dir)
+folder_path = PATH + '/../report/' + dir
 
 
 class RunLocustTestPlant():
+    def __init__(self):
+        self.ZD = ZabbixData()
+
     def start(self, locust_count, hatch_rate):
         url = master_host + 'swarm'
         post_data = {'locust_count': locust_count, 'hatch_rate': hatch_rate}
@@ -51,11 +63,11 @@ class RunLocustTestPlant():
         response_request_csv = None
         response_distribution_csv = None
         response_request_csv = requests.get(request_csv_url)
-        with open(PATH + '/../report/' + dir + '/' + str(locust_count) + '_request_report.csv', 'w') as request_f:
+        with open(folder_path + '/' + str(locust_count) + '_request_report.csv', 'w') as request_f:
             print(response_request_csv.text)
             request_f.write(response_request_csv.text)
         response_distribution_csv = requests.get(distribution_csv_url)
-        with open(PATH + '/../report/' + dir + '/' + str(locust_count) + '_distribution_report.csv',
+        with open(folder_path + '/' + str(locust_count) + '_distribution_report.csv',
                   'w') as distribution_f:
             print(response_distribution_csv.text)
             distribution_f.write(response_distribution_csv.text)
@@ -73,15 +85,11 @@ class RunLocustTestPlant():
         return {'fail_ratio': fail_ratio, 'fail_number': fail_number, 'total_rps': total_rps, 'user_count': user_count}
 
     def get_all_reports(self):
-        report_dir = PATH + '/../' + dir
-        csvs = os.walk(report_dir)
+        report_dir = folder_path
         files = []
-        files_temp = []
-        for i in csvs:
-            files_temp = i[2]
-        for dir_f in files_temp:
-            if ('.D' not in dir_f) or ('all' not in dir_f):
-                files.append(dir_f)
+        for i in os.listdir(report_dir):
+            if "server" not in i and (('.D' not in i) or ('all' not in i)):
+                files.append(i)
         distribution_first_line = ['Name', '# requests', '50%', '66%', '75%', '80%', '90%', '95%', '98%', '99%', '100%']
         request_first_line = ['Method', 'Name', '# requests', '# failures', 'Median response time',
                               'Average response time',
@@ -90,12 +98,11 @@ class RunLocustTestPlant():
         request = []
         if len(files) > 0:
             for i in files:
-                with open(PATH + '/../' + dir + '/' + i) as f:
+                with open(folder_path + '/' + i) as f:
                     csv_data = csv.reader(f)
                     if 'distribution' in i:
                         usr_number = i.split('_')[0]
-                        for h in csv_data:
-                            last_line = h
+                        last_line = [h for h in csv_data][-1]
                         distribution_temp = {}
                         for g in range(len(distribution_first_line)):
                             distribution_temp.update({distribution_first_line[g]: last_line[g]})
@@ -104,9 +111,8 @@ class RunLocustTestPlant():
                         distribution.append(distribution_temp)
                     else:
                         usr_number = i.split('_')[0]
-                        for z in csv_data:
-                            last_line = z
-                            request_temp = {}
+                        last_line = [z for z in csv_data][-1]
+                        request_temp = {}
                         for g in range(len(request_first_line)):
                             request_temp.update({request_first_line[g]: last_line[g]})
                         request_temp.update({'User Number': usr_number})
@@ -121,12 +127,12 @@ class RunLocustTestPlant():
                                      'Median response time',
                                      'Average response time',
                                      'Min response time', 'Max response time', 'Average Content Size', 'Requests/s']
-        with open(PATH + '/../' + dir + '/' + 'distribution_all_report.csv', 'w') as distribution_report:
+        with open(folder_path + '/distribution_all_report.csv', 'w') as distribution_report:
             dw = csv.DictWriter(distribution_report, distribution_report_first_line)
             dw.writeheader()
             for row in distribution:
                 dw.writerow(row)
-        with open(PATH + '/../' + dir + '/' + 'request_all_report.csv', 'w') as request_report:
+        with open(folder_path + '/request_all_report.csv', 'w') as request_report:
             dw = csv.DictWriter(request_report, request_report_first_line)
             dw.writeheader()
             for row in request:
@@ -155,6 +161,8 @@ class RunLocustTestPlant():
                     if now_user_number >= locust_count:
                         time.sleep(duration)
                         self.get_csv_report(locust_count)
+                        if host_name is not None:
+                            self.ZD.save_data_to_csv(locust_count, host_name, folder_path)
                         return True
                     else:
                         time.sleep(check_stat_time)
@@ -173,5 +181,5 @@ class RunLocustTestPlant():
                 break
         self.stop()
         self.get_all_reports()
-
-
+        if host_name is not None:
+            self.ZD.all_report_to_csv(host_name, folder_path)
