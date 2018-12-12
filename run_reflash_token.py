@@ -3,5 +3,5 @@
 
 from utils.wuren_meme_duid_datas import reflash_token, registry_duid_tokens
 
-# reflash_token()
-registry_duid_tokens(1000)
+reflash_token()
+# registry_duid_tokens(1000)
