@@ -91,6 +91,7 @@ def registry_duid_tokens(no):
     while True:
         data = GT.registry()
         result.append(data)
+        print(result)
         if len(result) == no:
             with open(PATH + "/duid_token.yaml", "w") as f:
                 yaml.dump(result, f, default_flow_style=False)
