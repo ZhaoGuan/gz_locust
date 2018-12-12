@@ -115,5 +115,5 @@ def reflash_token():
 
 
 if __name__ == "__main__":
-    # registry_duid_tokens(1000)
-    reflash_token()
+    registry_duid_tokens(1000)
+    # reflash_token()
