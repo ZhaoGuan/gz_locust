@@ -1,15 +1,15 @@
 master_host: http://18.217.11.105:8089/
 #master_host: http://0.0.0.0:8089/
-dir: 20181212_
+dir: 20181212_search_fall
 host_name: wuren-backend-burger-web1
 plan: [
-#{'locust_count': 300, 'hatch_rate': 50},
-#{'locust_count': 500, 'hatch_rate': 50},
-  #{'locust_count': 650, 'hatch_rate': 50},
-  {'locust_count': 1000, 'hatch_rate': 50},
-  {'locust_count': 1400, 'hatch_rate': 50},
-  {'locust_count': 2000, 'hatch_rate': 50},
-  {'locust_count': 2500, 'hatch_rate': 50}
+  #{'locust_count': 300, 'hatch_rate': 50},
+{'locust_count': 500, 'hatch_rate': 50},
+{'locust_count': 650, 'hatch_rate': 50},
+{'locust_count': 1000, 'hatch_rate': 50},
+{'locust_count': 1500, 'hatch_rate': 50},
+  #  {'locust_count': 2000, 'hatch_rate': 50},
+  #  {'locust_count': 2500, 'hatch_rate': 50}
   #{'locust_count': 500, 'hatch_rate': 50},
   #{'locust_count': 700, 'hatch_rate': 50},
   #{'locust_count': 850, 'hatch_rate': 50}
