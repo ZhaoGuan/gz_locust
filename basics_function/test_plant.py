@@ -47,6 +47,7 @@ class RunLocustTestPlant():
 
     def start(self, locust_count, hatch_rate):
         url = master_host + 'swarm'
+        print(url)
         post_data = {'locust_count': locust_count, 'hatch_rate': hatch_rate}
         response = requests.post(url, data=post_data)
         return response
@@ -152,6 +153,7 @@ class RunLocustTestPlant():
 
     def run_test(self, locust_count, hatch_rate, duration):
         start = self.start(locust_count, hatch_rate)
+        print(start)
         if json.loads(start.text)['success']:
             while True:
                 now_user_number = self.get_false(locust_count)
