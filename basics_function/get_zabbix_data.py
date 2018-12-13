@@ -58,8 +58,10 @@ class ZabbixData:
 
     def get_server_item_data(self, host_id, key):
         # 监控内容
-        # 每分钟cpu load
+        # 每分钟cpu load 每核
         # system.cpu.load[percpu,avg1]
+        # 每分钟cpu load 全核
+        # system.cpu.load[all,avg1]
         # 可用内存
         # vm.memory.size[available]
         # cpu io wait tiime
@@ -130,5 +132,6 @@ if __name__ == "__main__":
     ZD = ZabbixData()
     host_id = ZD.get_host_id("wuren-backend-burger-web0")
     # print(host_id)
-    load = ZD.get_server_data(host_id)
+    load = ZD.get_server_item_data(host_id, "load")
+    # load = ZD.get_server_data(host_id)
     print(load)
