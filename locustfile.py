@@ -376,7 +376,7 @@ class WuRen(TaskSet):
                                       "7554e5ba2dd05b0989a20e6420da71ae", "aff362bd018860d154e8781447da9491",
                                       "aaa39926c9c2a0a9e25eac85016a7ea7", "a9e4204848196084b9bdc534c46fdc9d"]}},
                        'MODE': {'TYPE': 'POST'}, 'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT',
-                                                          'DATA': {"token": token,
+                                                          'DATA': {"token": [token],
                                                                    'itemId': ['6e55a422a6e716099855fa6e635c4046']}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'EXTRA': {'LIST_REPEATED': False, 'LIST_EMPTY': False,
                                                                         'URL_FROM': '5nuthost.com'},
