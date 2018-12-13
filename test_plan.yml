@@ -13,7 +13,7 @@ plan: [
 {'locust_count': 1000, 'hatch_rate': 50},
 {'locust_count': 1100, 'hatch_rate': 50},
 {'locust_count': 1200, 'hatch_rate': 50},
-#{'locust_count': 1500, 'hatch_rate': 50},
+{'locust_count': 1500, 'hatch_rate': 50},
   #  {'locust_count': 2000, 'hatch_rate': 50},
   #  {'locust_count': 2500, 'hatch_rate': 50}
   #{'locust_count': 500, 'hatch_rate': 50},
@@ -22,4 +22,4 @@ plan: [
 ]
 #时间单位S
 #少于180使用180
-duration: 180
+duration: 240
