@@ -1,6 +1,6 @@
 master_host: http://18.217.11.105:8089/
 #master_host: http://0.0.0.0:8089/
-dir: 20181212_create_category
+dir: 20181212_create_list
 host_name: wuren-backend-burger-web0
 plan: [
 #  {'locust_count': 50, 'hatch_rate': 20},
@@ -11,6 +11,8 @@ plan: [
 {'locust_count': 700, 'hatch_rate': 50},
 {'locust_count': 750, 'hatch_rate': 50},
 {'locust_count': 800, 'hatch_rate': 50},
+{'locust_count': 900, 'hatch_rate': 50},
+{'locust_count': 950, 'hatch_rate': 50},
 #{'locust_count': 1200, 'hatch_rate': 50},
 #{'locust_count': 1500, 'hatch_rate': 50},
   #  {'locust_count': 2000, 'hatch_rate': 50},
