@@ -1,6 +1,6 @@
 master_host: http://18.217.11.105:8089/
 #master_host: http://0.0.0.0:8089/
-dir: 20181213_search_hot
+dir: 20181213_search_fall
 host_name: wuren-backend-burger-web0
 plan: [
   #  {'locust_count': 50, 'hatch_rate': 10},
@@ -8,15 +8,18 @@ plan: [
   #  {'locust_count': 70, 'hatch_rate': 10},
   #  {'locust_count': 80, 'hatch_rate': 10},
   #  {'locust_count': 90, 'hatch_rate': 10},
+{'locust_count': 300, 'hatch_rate': 50},
 {'locust_count': 500, 'hatch_rate': 50},
-{'locust_count': 800, 'hatch_rate': 50},
-{'locust_count': 900, 'hatch_rate': 50},
-{'locust_count': 1000, 'hatch_rate': 50},
-{'locust_count': 1200, 'hatch_rate': 50},
-{'locust_count': 1500, 'hatch_rate': 50},
-#{'locust_count': 1700 , 'hatch_rate': 50},
-#{'locust_count': 1800 , 'hatch_rate': 50},
-#{'locust_count': 1900 , 'hatch_rate': 50},
+{'locust_count': 600, 'hatch_rate': 50},
+{'locust_count': 700, 'hatch_rate': 50},
+{'locust_count': 750, 'hatch_rate': 50},
+  #{'locust_count': 900, 'hatch_rate': 50},
+  #{'locust_count': 1000, 'hatch_rate': 50},
+  #{'locust_count': 1200, 'hatch_rate': 50},
+  #{'locust_count': 1500, 'hatch_rate': 50},
+  #{'locust_count': 1700 , 'hatch_rate': 50},
+  #{'locust_count': 1800 , 'hatch_rate': 50},
+  #{'locust_count': 1900 , 'hatch_rate': 50},
   #  {'locust_count': 2000, 'hatch_rate': 50},
   #  {'locust_count': 2500, 'hatch_rate': 50}
   #{'locust_count': 500, 'hatch_rate': 50},
