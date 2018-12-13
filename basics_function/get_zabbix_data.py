@@ -128,7 +128,7 @@ class ZabbixData:
 
 if __name__ == "__main__":
     ZD = ZabbixData()
-    # host_id = ZD.get_host_id("wuren-backend-burger-web1")
+    host_id = ZD.get_host_id("wuren-backend-burger-web0")
     # print(host_id)
-    load = ZD.get_server_item_data("10262", "cpu")
+    load = ZD.get_server_data(host_id)
     print(load)

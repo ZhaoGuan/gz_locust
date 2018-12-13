@@ -327,7 +327,7 @@ class WuRen(TaskSet):
                               'THE_ABOVE': {'DATA': 'info/group_list/^/title'}}, 'path': './case/meme/create_home.yml'}
         true_requets(self.client, case_data)
 
-    @task(10)
+    @task(0)
     def create_list(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
@@ -355,7 +355,7 @@ class WuRen(TaskSet):
                      'path': './case/meme/create_list.yml'}
         true_requets(self.client, case_data)
 
-    @task(0)
+    @task(10)
     def create_template(self):
         user_data = random.choice(user_datas)
         duid = user_data['duid']
