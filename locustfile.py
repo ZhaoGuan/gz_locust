@@ -475,7 +475,7 @@ class WuRen(TaskSet):
                        'HEADERS': {'TYPE': '5NUT', 'DATA': {'version': [1477], 'duid': [duid], 'lang': ['en_US']}},
                        'PARAMS': {'TYPE': 'NORMAL', 'DATA': None}, 'MODE': {'TYPE': 'POST'},
                        'BODY': {'TYPE': 'JSON', 'FUNCTION': '5NUT',
-                                'DATA': {'token': [token], 'index': [100000], 'limit': [20]}}}},
+                                'DATA': {'token': [token], 'id': ["100000"], 'limit': [20]}}}},
                               'DATA_FORMAT': {'TYPE': 'ONLY', 'EXTRA': {'LIST_REPEATED': False},
                                               'DATA': {'errorCode': 'Str', 'errorMsg': 'Str',
                                                        'info': {'pic_list': [{
