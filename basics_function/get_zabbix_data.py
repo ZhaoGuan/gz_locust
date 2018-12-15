@@ -87,7 +87,10 @@ class ZabbixData:
 
     def get_server_data(self, host_id):
         data_list = {
-            "Load": "system.cpu.load[percpu,avg1]",
+            "Per Cpu Load avg1": "system.cpu.load[percpu,avg1]",
+            "Per Cpu Load avg5": "system.cpu.load[percpu,avg5]",
+            # "Per Cpu Load avg15": "system.cpu.load[percpu,avg15]",
+            # "Load": "system.cpu.load[percpu,avg1]",
             "Available_Memory": "vm.memory.size[available]",
             "IOWait": "system.cpu.util[,iowait]"
         }
@@ -102,7 +105,8 @@ class ZabbixData:
         file_path = path + "/server_" + host_name + "_" + str(count) + ".csv"
         host_id = self.get_host_id(host_name)
         result = self.get_server_data(host_id)
-        first_line = ["Count", "Load", "Available_Memory", "IOWait"]
+        first_line = ["Count", "Per Cpu Load avg1", "Per Cpu Load avg5", "Available_Memory", "IOWait"]
+        # first_line = ["Count", "Load", "Available_Memory", "IOWait"]
         result.update({"Count": count})
         print(result)
         with open(file_path, "w") as f:
@@ -114,7 +118,8 @@ class ZabbixData:
     def all_report_to_csv(self, host_name, path):
         result_file_list = []
         file_list = os.listdir(path)
-        all_data = [["Count", "Load", "Available_Memory", "IOWait"]]
+        all_data = ["Count", "Per Cpu Load avg1", "Per Cpu Load avg5", "Available_Memory", "IOWait"]
+        # all_data = [["Count", "Load", "Available_Memory", "IOWait"]]
         for file in file_list:
             if "server" in file and "all" not in file:
                 result_file_list.append(file)
@@ -132,6 +137,6 @@ if __name__ == "__main__":
     ZD = ZabbixData()
     host_id = ZD.get_host_id("wuren-backend-burger-web0")
     # print(host_id)
-    load = ZD.get_server_item_data(host_id, "load")
-    # load = ZD.get_server_data(host_id)
+    # load = ZD.get_server_item_data(host_id, "load")
+    load = ZD.get_server_data(host_id)
     print(load)
